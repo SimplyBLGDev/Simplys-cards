@@ -1,0 +1,99 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "DeckGenerator",
+"language": "GDScript",
+"path": "res://Scripts/Common/DeckGenerator.gd"
+}, {
+"base": "Node2D",
+"class": "Game",
+"language": "GDScript",
+"path": "res://Scripts/Games/Game.gd"
+}, {
+"base": "Node2D",
+"class": "Piece",
+"language": "GDScript",
+"path": "res://Scripts/Common/Piece.gd"
+}, {
+"base": "Node2D",
+"class": "Pile",
+"language": "GDScript",
+"path": "res://Scripts/Common/Pile.gd"
+}, {
+"base": "Pile",
+"class": "ShowPile",
+"language": "GDScript",
+"path": "res://Scripts/Common/ShowPile.gd"
+}, {
+"base": "Polygon2D",
+"class": "SmoothSprite",
+"language": "GDScript",
+"path": "res://SmoothSprite.gd"
+} ]
+_global_script_class_icons={
+"DeckGenerator": "",
+"Game": "",
+"Piece": "",
+"Pile": "",
+"ShowPile": "",
+"SmoothSprite": ""
+}
+
+[application]
+
+config/name="Simplys Cards"
+run/main_scene="res://root.tscn"
+boot_splash/image="res://Boot.png"
+boot_splash/bg_color=Color( 0.203922, 0.352941, 0.184314, 1 )
+config/icon="res://icon.png"
+config/windows_native_icon="res://Icon.ico"
+
+[autoload]
+
+GameController="*res://Globals/GameController.tscn"
+ConnectionController="*res://Globals/ConnectionController.tscn"
+Utils="*res://Globals/Utils.tscn"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/handheld/orientation="portrait"
+
+[editor_plugins]
+
+enabled=PoolStringArray(  )
+
+[gdnative]
+
+singletons=[  ]
+
+[gui]
+
+theme/custom_font="res://UI/Fonts/Title.tres"
+
+[input]
+
+ui_click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=1
+quality/intended_usage/framebuffer_allocation.mobile=1
+vram_compression/import_etc=true
+environment/default_clear_color=Color( 0.203922, 0.352941, 0.184314, 1 )
+environment/default_environment="res://default_env.tres"

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Common/Piece.gd" type="Script" id=1]
+[ext_resource path="res://Prefabs/Cosmetic/Animations/Card_Turn.tres" type="Animation" id=2]
+[ext_resource path="res://Sprites/Tilesets/Cards/StandardDeckv2.png" type="Texture" id=3]
+
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 19, 32 )
+
+[node name="Piece" type="Node2D"]
+z_index = 1
+script = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="." groups=[
+"Pieces",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+vframes = 5
+hframes = 17
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+anims/Turn = ExtResource( 2 )

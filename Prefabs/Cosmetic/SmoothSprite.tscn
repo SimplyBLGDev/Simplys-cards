@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://SmoothSprite.gd" type="Script" id=1]
+
+[node name="Node2D" type="Polygon2D"]
+antialiased = true
+polygon = PoolVector2Array( -1, -1, 1, -1, 1, 1, -1, 1 )
+uv = PoolVector2Array( 0, 0, 1, 0, 1, 1, 0, 1 )
+script = ExtResource( 1 )

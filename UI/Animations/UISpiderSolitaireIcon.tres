@@ -1,0 +1,51 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+resource_name = "SpiderSolitaireIcon"
+length = 8.0
+loop = true
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("CL/Sprite:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -110, -0.25, 0, 0.0271237, 35.787, -130, -0.358772, -0.0680389, 0.474468, -0.0680389, -110, -0.234742, 25.5573, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4, 0.8 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("CR/Sprite:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -110, -0.25, 0, 0.0271237, 35.787, -130, -0.358772, -0.0680389, 0.474468, -0.0680389, -110, -0.234742, 25.5573, 0.25, 0 ),
+"times": PoolRealArray( 0.1, 0.5, 0.9 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Spider/SpiderEyes:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.25, 1.3, 1.35, 1.4, 1.45, 5, 6.75, 6.8, 6.85 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1e-05 ), Vector2( 1, 1 ), Vector2( 1, 1e-05 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1e-05 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Spider/SpiderEyes:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 4.45, 4.55, 7.05, 7.45, 7.55 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 25.5 ), Vector2( 0.3, 25.5 ), Vector2( 0.3, 25.5 ), Vector2( -0.4, 25.5 ), Vector2( 0, 25.5 ) ]
+}

@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Common/BoardTile.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/BG/WoodenBoardSquare.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
+
+[node name="Cell" type="Node2D"]
+script = ExtResource( 1 )
+maxCardSeparation = Vector2( 0, 0 )
+size = Vector2( 0, 0 )
+overrideColliderSize = Vector2( 16, 16 )
+useOverrideColliderOffset = true
+
+[node name="Area2D" type="Area2D" parent="." groups=[
+"Piles",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="Z-Offset" type="Node2D" parent="."]
+z_index = -1
+
+[node name="Polygon2D" type="Polygon2D" parent="Z-Offset"]
+texture = ExtResource( 2 )
+polygon = PoolVector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
+uv = PoolVector2Array( 8, 4, 4, 8, 0, 4, 4, 0 )
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]

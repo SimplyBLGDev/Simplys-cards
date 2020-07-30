@@ -1,0 +1,277 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Prefabs/Pile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Common/DeckGenerator.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Games/KlondikeSolitaire.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Common/ShowPile.gd" type="Script" id=4]
+[ext_resource path="res://Prefabs/Cosmetic/PileSprite.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sprites/SuitPileMarker.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "KlondikeSolitaireDeal"
+length = 16.5
+step = 0.25
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14, 15, 15.25, 15.5, 15.75, 16, 16.25, 16.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "shuffle"
+}, {
+"args": [ 0 ],
+"method": "deal_step"
+}, {
+"args": [ 1 ],
+"method": "deal_step"
+}, {
+"args": [ 2 ],
+"method": "deal_step"
+}, {
+"args": [ 3 ],
+"method": "deal_step"
+}, {
+"args": [ 4 ],
+"method": "deal_step"
+}, {
+"args": [ 5 ],
+"method": "deal_step"
+}, {
+"args": [ 6 ],
+"method": "deal_step"
+}, {
+"args": [ 1 ],
+"method": "deal_step"
+}, {
+"args": [ 2 ],
+"method": "deal_step"
+}, {
+"args": [ 3 ],
+"method": "deal_step"
+}, {
+"args": [ 4 ],
+"method": "deal_step"
+}, {
+"args": [ 5 ],
+"method": "deal_step"
+}, {
+"args": [ 6 ],
+"method": "deal_step"
+}, {
+"args": [ 2 ],
+"method": "deal_step"
+}, {
+"args": [ 3 ],
+"method": "deal_step"
+}, {
+"args": [ 4 ],
+"method": "deal_step"
+}, {
+"args": [ 5 ],
+"method": "deal_step"
+}, {
+"args": [ 6 ],
+"method": "deal_step"
+}, {
+"args": [ 3 ],
+"method": "deal_step"
+}, {
+"args": [ 4 ],
+"method": "deal_step"
+}, {
+"args": [ 5 ],
+"method": "deal_step"
+}, {
+"args": [ 6 ],
+"method": "deal_step"
+}, {
+"args": [ 4 ],
+"method": "deal_step"
+}, {
+"args": [ 5 ],
+"method": "deal_step"
+}, {
+"args": [ 6 ],
+"method": "deal_step"
+}, {
+"args": [ 5 ],
+"method": "deal_step"
+}, {
+"args": [ 6 ],
+"method": "deal_step"
+}, {
+"args": [ 6 ],
+"method": "deal_step"
+}, {
+"args": [ 0 ],
+"method": "flip_pile_top_card"
+}, {
+"args": [ 1 ],
+"method": "flip_pile_top_card"
+}, {
+"args": [ 2 ],
+"method": "flip_pile_top_card"
+}, {
+"args": [ 3 ],
+"method": "flip_pile_top_card"
+}, {
+"args": [ 4 ],
+"method": "flip_pile_top_card"
+}, {
+"args": [ 5 ],
+"method": "flip_pile_top_card"
+}, {
+"args": [ 6 ],
+"method": "flip_pile_top_card"
+} ]
+}
+
+[node name="KlondikeSolitaire" type="Node2D"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+dealSpeed = 6.0
+flipAmount = 1
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Deck" parent="." instance=ExtResource( 1 )]
+position = Vector2( -144, -104 )
+z_index = -1
+maxCardSeparation = Vector2( 0.1, -0.1 )
+size = Vector2( 3, -3 )
+
+[node name="DeckGenerator" type="Node2D" parent="Deck" groups=[
+"_on_scene_ready",
+]]
+position = Vector2( 0, 104 )
+script = ExtResource( 2 )
+suits = [ 1, 2, 3, 4 ]
+values = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+
+[node name="Sprite" parent="Deck" instance=ExtResource( 5 )]
+
+[node name="DeckFlip" parent="." instance=ExtResource( 1 )]
+position = Vector2( -88, -104 )
+z_index = -1
+script = ExtResource( 4 )
+maxCardSeparation = Vector2( 10, 0 )
+size = Vector2( 30, 0 )
+
+[node name="SuitPile1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -104 )
+z_index = -1
+maxCardSeparation = Vector2( 0.2, -0.2 )
+size = Vector2( 3, -3 )
+
+[node name="Sprite" parent="SuitPile1" instance=ExtResource( 5 )]
+
+[node name="SuitPileMarker" type="Sprite" parent="SuitPile1/Sprite"]
+position = Vector2( 21, 34 )
+texture = ExtResource( 6 )
+
+[node name="SuitPile2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 48, -104 )
+z_index = -1
+maxCardSeparation = Vector2( 0.2, -0.2 )
+size = Vector2( 3, -3 )
+
+[node name="Sprite" parent="SuitPile2" instance=ExtResource( 5 )]
+
+[node name="SuitPileMarker" type="Sprite" parent="SuitPile2/Sprite"]
+position = Vector2( 21, 34 )
+texture = ExtResource( 6 )
+
+[node name="SuitPile3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 96, -104 )
+z_index = -1
+maxCardSeparation = Vector2( 0.2, -0.2 )
+size = Vector2( 3, -3 )
+
+[node name="Sprite" parent="SuitPile3" instance=ExtResource( 5 )]
+
+[node name="SuitPileMarker2" type="Sprite" parent="SuitPile3/Sprite"]
+position = Vector2( 21, 34 )
+texture = ExtResource( 6 )
+
+[node name="SuitPile4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 144, -104 )
+z_index = -1
+maxCardSeparation = Vector2( 0.2, -0.2 )
+size = Vector2( 3, -3 )
+
+[node name="Sprite" parent="SuitPile4" instance=ExtResource( 5 )]
+
+[node name="SuitPileMarker3" type="Sprite" parent="SuitPile4/Sprite"]
+position = Vector2( 21, 34 )
+texture = ExtResource( 6 )
+
+[node name="Pile1" parent="." instance=ExtResource( 1 )]
+position = Vector2( -144, 0 )
+z_index = -1
+maxCardSeparation = Vector2( 0, 20 )
+size = Vector2( 0, 150 )
+
+[node name="Sprite" parent="Pile1" instance=ExtResource( 5 )]
+
+[node name="Pile2" parent="." instance=ExtResource( 1 )]
+position = Vector2( -96, 0 )
+z_index = -1
+maxCardSeparation = Vector2( 0, 20 )
+size = Vector2( 0, 150 )
+
+[node name="Sprite" parent="Pile2" instance=ExtResource( 5 )]
+
+[node name="Pile3" parent="." instance=ExtResource( 1 )]
+position = Vector2( -48, 0 )
+z_index = -1
+maxCardSeparation = Vector2( 0, 20 )
+size = Vector2( 0, 150 )
+
+[node name="Sprite" parent="Pile3" instance=ExtResource( 5 )]
+
+[node name="Pile4" parent="." instance=ExtResource( 1 )]
+z_index = -1
+maxCardSeparation = Vector2( 0, 20 )
+size = Vector2( 0, 150 )
+
+[node name="Sprite" parent="Pile4" instance=ExtResource( 5 )]
+
+[node name="Pile5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 48, 0 )
+z_index = -1
+maxCardSeparation = Vector2( 0, 20 )
+size = Vector2( 0, 150 )
+
+[node name="Sprite" parent="Pile5" instance=ExtResource( 5 )]
+
+[node name="Pile6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 96, 0 )
+z_index = -1
+maxCardSeparation = Vector2( 0, 20 )
+size = Vector2( 0, 150 )
+
+[node name="Sprite" parent="Pile6" instance=ExtResource( 5 )]
+
+[node name="Pile7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 144, 0 )
+z_index = -1
+maxCardSeparation = Vector2( 0, 20 )
+size = Vector2( 0, 150 )
+
+[node name="Sprite" parent="Pile7" instance=ExtResource( 5 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/KlondikeSolitaireDeal = SubResource( 1 )
+
+[node name="PlayArea" type="Position2D" parent="."]
+position = Vector2( -168, -144 )
+
+[node name="PlayArea2" type="Position2D" parent="."]
+position = Vector2( 168, 192 )

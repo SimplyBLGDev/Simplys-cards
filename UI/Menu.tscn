@@ -1,0 +1,132 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/UI/ConnectionUI.gd" type="Script" id=1]
+
+[node name="UI" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ConnectionUI" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/ConnectionUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/ConnectionUI/CenterContainer"]
+margin_left = 312.0
+margin_top = 49.0
+margin_right = 712.0
+margin_bottom = 549.0
+rect_min_size = Vector2( 400, 500 )
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/ConnectionUI/CenterContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 393.0
+margin_bottom = 493.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ConnectionUI/CenterContainer/PanelContainer/CenterContainer"]
+margin_left = 18.0
+margin_top = 127.0
+margin_right = 368.0
+margin_bottom = 359.0
+rect_min_size = Vector2( 350, 0 )
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ConnectionUI/CenterContainer/PanelContainer/CenterContainer/VBoxContainer"]
+margin_right = 350.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="CanvasLayer/ConnectionUI/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_top = 5.0
+margin_right = 86.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Name:"
+
+[node name="Txt_Name" type="LineEdit" parent="CanvasLayer/ConnectionUI/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 90.0
+margin_right = 350.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/ConnectionUI/CenterContainer/PanelContainer/CenterContainer/VBoxContainer"]
+margin_top = 28.0
+margin_right = 350.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ConnectionUI/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/ConnectionUI/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/Panel/VBoxContainer"]
+margin_right = 350.0
+margin_bottom = 14.0
+text = "Host a game"
+align = 1
+
+[node name="CreateLobby" type="Button" parent="CanvasLayer/ConnectionUI/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/Panel/VBoxContainer"]
+margin_top = 18.0
+margin_right = 350.0
+margin_bottom = 38.0
+text = "Create"
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/ConnectionUI/CenterContainer/PanelContainer/CenterContainer/VBoxContainer"]
+margin_top = 132.0
+margin_right = 350.0
+margin_bottom = 232.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ConnectionUI/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/ConnectionUI/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/Panel2/VBoxContainer"]
+margin_right = 350.0
+margin_bottom = 14.0
+text = "Join a game"
+align = 1
+
+[node name="ConnectToLobby" type="Button" parent="CanvasLayer/ConnectionUI/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/Panel2/VBoxContainer"]
+margin_top = 18.0
+margin_right = 350.0
+margin_bottom = 38.0
+text = "Connect"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ConnectionUI/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/Panel2/VBoxContainer"]
+margin_top = 42.0
+margin_right = 350.0
+margin_bottom = 66.0
+
+[node name="Label" type="Label" parent="CanvasLayer/ConnectionUI/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/Panel2/VBoxContainer/HBoxContainer"]
+margin_top = 5.0
+margin_right = 86.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "IP address:"
+
+[node name="txtIPAddress" type="LineEdit" parent="CanvasLayer/ConnectionUI/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/Panel2/VBoxContainer/HBoxContainer"]
+margin_left = 90.0
+margin_right = 350.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+[connection signal="button_up" from="CanvasLayer/ConnectionUI/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/Panel/VBoxContainer/CreateLobby" to="CanvasLayer/ConnectionUI" method="_on_CreateLobby_button_up"]
+[connection signal="button_up" from="CanvasLayer/ConnectionUI/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/Panel2/VBoxContainer/ConnectToLobby" to="CanvasLayer/ConnectionUI" method="_on_ConnectToLobby_button_up"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Common/GameSpecific/ShogiPiece.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Tilesets/Shogi/ShogiPieces.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Piece" type="Node2D"]
+script = ExtResource( 1 )
+tilesetName = "Shogi/ShogiPieces"
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 8
+frame = 1
+
+[node name="Perspective" type="Polygon2D" parent="Sprite"]
+show_behind_parent = true
+position = Vector2( 0, -1 )
+color = Color( 0.501961, 0.431373, 0.298039, 1 )
+polygon = PoolVector2Array( -10.5, 13, -10, 15, 10, 15, 10.5, 13, 8, -10.5, 0, -13, -8, -10.5 )
+
+[node name="Front" type="Polygon2D" parent="Sprite"]
+show_behind_parent = true
+position = Vector2( 0, -1 )
+color = Color( 0.713726, 0.611765, 0.415686, 1 )
+polygon = PoolVector2Array( -10.5, 13, 10.5, 13, 8, -10.5, 0, -13, -8, -10.5 )
+
+[node name="Area2D" type="Area2D" parent="." groups=[
+"Pieces",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )

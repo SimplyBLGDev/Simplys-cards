@@ -1,0 +1,189 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Prefabs/Pile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Common/DeckGenerator.gd" type="Script" id=2]
+[ext_resource path="res://Prefabs/Cosmetic/PileSprite.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Games/PyramidSolitaire.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "PyramidSolitaireDeal"
+length = 0.7
+step = 0.02
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.04, 0.06, 0.08, 0.1, 0.12, 0.14, 0.16, 0.18, 0.2, 0.22, 0.24, 0.26, 0.28, 0.3, 0.32, 0.34, 0.36, 0.38, 0.4, 0.42, 0.44, 0.46, 0.48, 0.5, 0.52, 0.54, 0.56, 0.58, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ 0 ],
+"method": "dealNext"
+}, {
+"args": [ 1 ],
+"method": "dealNext"
+}, {
+"args": [ 0 ],
+"method": "dealNext"
+}, {
+"args": [ 2 ],
+"method": "dealNext"
+}, {
+"args": [ 1 ],
+"method": "dealNext"
+}, {
+"args": [ 0 ],
+"method": "dealNext"
+}, {
+"args": [ 3 ],
+"method": "dealNext"
+}, {
+"args": [ 2 ],
+"method": "dealNext"
+}, {
+"args": [ 1 ],
+"method": "dealNext"
+}, {
+"args": [ 0 ],
+"method": "dealNext"
+}, {
+"args": [ 4 ],
+"method": "dealNext"
+}, {
+"args": [ 3 ],
+"method": "dealNext"
+}, {
+"args": [ 2 ],
+"method": "dealNext"
+}, {
+"args": [ 1 ],
+"method": "dealNext"
+}, {
+"args": [ 0 ],
+"method": "dealNext"
+}, {
+"args": [ 5 ],
+"method": "dealNext"
+}, {
+"args": [ 4 ],
+"method": "dealNext"
+}, {
+"args": [ 3 ],
+"method": "dealNext"
+}, {
+"args": [ 2 ],
+"method": "dealNext"
+}, {
+"args": [ 1 ],
+"method": "dealNext"
+}, {
+"args": [ 0 ],
+"method": "dealNext"
+}, {
+"args": [ 6 ],
+"method": "dealNext"
+}, {
+"args": [ 5 ],
+"method": "dealNext"
+}, {
+"args": [ 4 ],
+"method": "dealNext"
+}, {
+"args": [ 3 ],
+"method": "dealNext"
+}, {
+"args": [ 2 ],
+"method": "dealNext"
+}, {
+"args": [ 1 ],
+"method": "dealNext"
+}, {
+"args": [ 0 ],
+"method": "dealNext"
+}, {
+"args": [ -1 ],
+"method": "dealNext"
+} ]
+}
+
+[node name="PyramidSolitaire" type="Node2D"]
+script = ExtResource( 4 )
+dealSpeed = 0.3
+
+[node name="PlayArea" type="Position2D" parent="."]
+position = Vector2( -216, -48 )
+
+[node name="PlayArea2" type="Position2D" parent="."]
+position = Vector2( 208, 232 )
+
+[node name="Deck" parent="." instance=ExtResource( 1 )]
+position = Vector2( -192, -8 )
+maxCardSeparation = Vector2( 0.2, -0.2 )
+size = Vector2( 5, -5 )
+
+[node name="DeckGenerator" type="Node2D" parent="Deck"]
+script = ExtResource( 2 )
+suits = [ 1, 2, 3, 4 ]
+values = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+
+[node name="Sprite" parent="Deck" instance=ExtResource( 3 )]
+
+[node name="DeckFlip" parent="." instance=ExtResource( 1 )]
+position = Vector2( -192, 72 )
+maxCardSeparation = Vector2( 0.2, -0.2 )
+size = Vector2( 5, -5 )
+
+[node name="Sprite" parent="DeckFlip" instance=ExtResource( 3 )]
+
+[node name="ResultPile" parent="." instance=ExtResource( 1 )]
+position = Vector2( 184, -8 )
+maxCardSeparation = Vector2( 0.2, -0.2 )
+size = Vector2( 5, -5 )
+
+[node name="Sprite" parent="ResultPile" instance=ExtResource( 3 )]
+
+[node name="Pile1" parent="." instance=ExtResource( 1 )]
+maxCardSeparation = Vector2( 26, 32 )
+size = Vector2( 182, 224 )
+perPieceCollider = true
+
+[node name="Pile2" parent="." instance=ExtResource( 1 )]
+position = Vector2( -26, 32 )
+maxCardSeparation = Vector2( 26, 32 )
+size = Vector2( 156, 192 )
+perPieceCollider = true
+
+[node name="Pile3" parent="." instance=ExtResource( 1 )]
+position = Vector2( -52, 64 )
+maxCardSeparation = Vector2( 26, 32 )
+size = Vector2( 130, 160 )
+perPieceCollider = true
+
+[node name="Pile4" parent="." instance=ExtResource( 1 )]
+position = Vector2( -78, 96 )
+maxCardSeparation = Vector2( 26, 32 )
+size = Vector2( 104, 128 )
+perPieceCollider = true
+
+[node name="Pile5" parent="." instance=ExtResource( 1 )]
+position = Vector2( -104, 128 )
+maxCardSeparation = Vector2( 26, 32 )
+size = Vector2( 78, 96 )
+perPieceCollider = true
+
+[node name="Pile6" parent="." instance=ExtResource( 1 )]
+position = Vector2( -130, 160 )
+maxCardSeparation = Vector2( 26, 32 )
+size = Vector2( 52, 64 )
+perPieceCollider = true
+
+[node name="Pile7" parent="." instance=ExtResource( 1 )]
+position = Vector2( -156, 192 )
+maxCardSeparation = Vector2( 26, 32 )
+size = Vector2( 26, 32 )
+perPieceCollider = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/PyramidSolitaireDeal = SubResource( 1 )

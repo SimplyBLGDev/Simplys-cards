@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Common/Board.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Games/Shogi.gd" type="Script" id=2]
+[ext_resource path="res://Prefabs/Pile.tscn" type="PackedScene" id=3]
+
+[node name="Shogi" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="BoardController" type="Node2D" parent="."]
+script = ExtResource( 1 )
+gridSize = Vector2( 9, 9 )
+cellSize = Vector2( 34, 34 )
+
+[node name="Captures0" parent="." instance=ExtResource( 3 )]
+position = Vector2( 368, 288 )
+size = Vector2( 0, -40 )
+
+[node name="Captures1" parent="." instance=ExtResource( 3 )]
+position = Vector2( -80, 8 )
+maxCardSeparation = Vector2( 0, 5 )
+
+[node name="PlayArea" type="Position2D" parent="."]
+position = Vector2( -112, -32 )
+
+[node name="PlayArea2" type="Position2D" parent="."]
+position = Vector2( 400, 336 )
