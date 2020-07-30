@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Games/PictureGallery.gd" type="Script" id=1]
 [ext_resource path="res://Prefabs/Pile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Common/DeckGenerator.gd" type="Script" id=3]
-[ext_resource path="res://Prefabs/Cosmetic/PileSprite.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "PictureGalleryDeal"
@@ -173,238 +172,170 @@ script = ExtResource( 3 )
 suits = [ 1, 2, 3, 4, 1, 2, 3, 4 ]
 values = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
 
-[node name="Sprite" parent="Deck" instance=ExtResource( 4 )]
-
 [node name="AcesPile" parent="." instance=ExtResource( 2 )]
 position = Vector2( -168, 128 )
 maxCardSeparation = Vector2( 10, 0 )
 size = Vector2( 100, 0 )
-
-[node name="Sprite" parent="AcesPile" instance=ExtResource( 4 )]
 
 [node name="HandPile1" parent="." instance=ExtResource( 2 )]
 position = Vector2( -168, 216 )
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 120 )
 
-[node name="Sprite" parent="HandPile1" instance=ExtResource( 4 )]
-
 [node name="HandPile2" parent="." instance=ExtResource( 2 )]
 position = Vector2( -120, 216 )
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 120 )
-
-[node name="Sprite" parent="HandPile2" instance=ExtResource( 4 )]
 
 [node name="HandPile3" parent="." instance=ExtResource( 2 )]
 position = Vector2( -72, 216 )
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 120 )
 
-[node name="Sprite" parent="HandPile3" instance=ExtResource( 4 )]
-
 [node name="HandPile4" parent="." instance=ExtResource( 2 )]
 position = Vector2( -24, 216 )
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 120 )
-
-[node name="Sprite" parent="HandPile4" instance=ExtResource( 4 )]
 
 [node name="HandPile5" parent="." instance=ExtResource( 2 )]
 position = Vector2( 24, 216 )
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 120 )
 
-[node name="Sprite" parent="HandPile5" instance=ExtResource( 4 )]
-
 [node name="HandPile6" parent="." instance=ExtResource( 2 )]
 position = Vector2( 72, 216 )
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 120 )
-
-[node name="Sprite" parent="HandPile6" instance=ExtResource( 4 )]
 
 [node name="HandPile7" parent="." instance=ExtResource( 2 )]
 position = Vector2( 120, 216 )
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 120 )
 
-[node name="Sprite" parent="HandPile7" instance=ExtResource( 4 )]
-
 [node name="HandPile8" parent="." instance=ExtResource( 2 )]
 position = Vector2( 168, 216 )
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 120 )
-
-[node name="Sprite" parent="HandPile8" instance=ExtResource( 4 )]
 
 [node name="2Pile1" parent="." instance=ExtResource( 2 )]
 position = Vector2( -168, 40 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
 
-[node name="Sprite" parent="2Pile1" instance=ExtResource( 4 )]
-
 [node name="2Pile2" parent="." instance=ExtResource( 2 )]
 position = Vector2( -120, 40 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
-
-[node name="Sprite" parent="2Pile2" instance=ExtResource( 4 )]
 
 [node name="2Pile3" parent="." instance=ExtResource( 2 )]
 position = Vector2( -72, 40 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
 
-[node name="Sprite" parent="2Pile3" instance=ExtResource( 4 )]
-
 [node name="2Pile4" parent="." instance=ExtResource( 2 )]
 position = Vector2( -24, 40 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
-
-[node name="Sprite" parent="2Pile4" instance=ExtResource( 4 )]
 
 [node name="2Pile5" parent="." instance=ExtResource( 2 )]
 position = Vector2( 24, 40 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
 
-[node name="Sprite" parent="2Pile5" instance=ExtResource( 4 )]
-
 [node name="2Pile6" parent="." instance=ExtResource( 2 )]
 position = Vector2( 72, 40 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
-
-[node name="Sprite" parent="2Pile6" instance=ExtResource( 4 )]
 
 [node name="2Pile7" parent="." instance=ExtResource( 2 )]
 position = Vector2( 120, 40 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
 
-[node name="Sprite" parent="2Pile7" instance=ExtResource( 4 )]
-
 [node name="2Pile8" parent="." instance=ExtResource( 2 )]
 position = Vector2( 168, 40 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
-
-[node name="Sprite" parent="2Pile8" instance=ExtResource( 4 )]
 
 [node name="3Pile1" parent="." instance=ExtResource( 2 )]
 position = Vector2( -168, -40 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
 
-[node name="Sprite" parent="3Pile1" instance=ExtResource( 4 )]
-
 [node name="3Pile2" parent="." instance=ExtResource( 2 )]
 position = Vector2( -120, -40 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
-
-[node name="Sprite" parent="3Pile2" instance=ExtResource( 4 )]
 
 [node name="3Pile3" parent="." instance=ExtResource( 2 )]
 position = Vector2( -72, -40 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
 
-[node name="Sprite" parent="3Pile3" instance=ExtResource( 4 )]
-
 [node name="3Pile4" parent="." instance=ExtResource( 2 )]
 position = Vector2( -24, -40 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
-
-[node name="Sprite" parent="3Pile4" instance=ExtResource( 4 )]
 
 [node name="3Pile5" parent="." instance=ExtResource( 2 )]
 position = Vector2( 24, -40 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
 
-[node name="Sprite" parent="3Pile5" instance=ExtResource( 4 )]
-
 [node name="3Pile6" parent="." instance=ExtResource( 2 )]
 position = Vector2( 72, -40 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
-
-[node name="Sprite" parent="3Pile6" instance=ExtResource( 4 )]
 
 [node name="3Pile7" parent="." instance=ExtResource( 2 )]
 position = Vector2( 120, -40 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
 
-[node name="Sprite" parent="3Pile7" instance=ExtResource( 4 )]
-
 [node name="3Pile8" parent="." instance=ExtResource( 2 )]
 position = Vector2( 168, -40 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
-
-[node name="Sprite" parent="3Pile8" instance=ExtResource( 4 )]
 
 [node name="4Pile1" parent="." instance=ExtResource( 2 )]
 position = Vector2( -168, -120 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
 
-[node name="Sprite" parent="4Pile1" instance=ExtResource( 4 )]
-
 [node name="4Pile2" parent="." instance=ExtResource( 2 )]
 position = Vector2( -120, -120 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
-
-[node name="Sprite" parent="4Pile2" instance=ExtResource( 4 )]
 
 [node name="4Pile3" parent="." instance=ExtResource( 2 )]
 position = Vector2( -72, -120 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
 
-[node name="Sprite" parent="4Pile3" instance=ExtResource( 4 )]
-
 [node name="4Pile4" parent="." instance=ExtResource( 2 )]
 position = Vector2( -24, -120 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
-
-[node name="Sprite" parent="4Pile4" instance=ExtResource( 4 )]
 
 [node name="4Pile5" parent="." instance=ExtResource( 2 )]
 position = Vector2( 24, -120 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
 
-[node name="Sprite" parent="4Pile5" instance=ExtResource( 4 )]
-
 [node name="4Pile6" parent="." instance=ExtResource( 2 )]
 position = Vector2( 72, -120 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
-
-[node name="Sprite" parent="4Pile6" instance=ExtResource( 4 )]
 
 [node name="4Pile7" parent="." instance=ExtResource( 2 )]
 position = Vector2( 120, -120 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
 
-[node name="Sprite" parent="4Pile7" instance=ExtResource( 4 )]
-
 [node name="4Pile8" parent="." instance=ExtResource( 2 )]
 position = Vector2( 168, -120 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
-
-[node name="Sprite" parent="4Pile8" instance=ExtResource( 4 )]
 
 [node name="PlayArea" type="Position2D" parent="."]
 position = Vector2( -190, -174 )

@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Prefabs/Pile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Common/DeckGenerator.gd" type="Script" id=2]
-[ext_resource path="res://Prefabs/Cosmetic/PileSprite.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Games/PyramidSolitaire.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
@@ -128,59 +127,60 @@ script = ExtResource( 2 )
 suits = [ 1, 2, 3, 4 ]
 values = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
 
-[node name="Sprite" parent="Deck" instance=ExtResource( 3 )]
-
 [node name="DeckFlip" parent="." instance=ExtResource( 1 )]
 position = Vector2( -192, 72 )
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 5, -5 )
-
-[node name="Sprite" parent="DeckFlip" instance=ExtResource( 3 )]
 
 [node name="ResultPile" parent="." instance=ExtResource( 1 )]
 position = Vector2( 184, -8 )
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 5, -5 )
 
-[node name="Sprite" parent="ResultPile" instance=ExtResource( 3 )]
-
 [node name="Pile1" parent="." instance=ExtResource( 1 )]
+pileMarker = 0
 maxCardSeparation = Vector2( 26, 32 )
 size = Vector2( 182, 224 )
 perPieceCollider = true
 
 [node name="Pile2" parent="." instance=ExtResource( 1 )]
 position = Vector2( -26, 32 )
+pileMarker = 0
 maxCardSeparation = Vector2( 26, 32 )
 size = Vector2( 156, 192 )
 perPieceCollider = true
 
 [node name="Pile3" parent="." instance=ExtResource( 1 )]
 position = Vector2( -52, 64 )
+pileMarker = 0
 maxCardSeparation = Vector2( 26, 32 )
 size = Vector2( 130, 160 )
 perPieceCollider = true
 
 [node name="Pile4" parent="." instance=ExtResource( 1 )]
 position = Vector2( -78, 96 )
+pileMarker = 0
 maxCardSeparation = Vector2( 26, 32 )
 size = Vector2( 104, 128 )
 perPieceCollider = true
 
 [node name="Pile5" parent="." instance=ExtResource( 1 )]
 position = Vector2( -104, 128 )
+pileMarker = 0
 maxCardSeparation = Vector2( 26, 32 )
 size = Vector2( 78, 96 )
 perPieceCollider = true
 
 [node name="Pile6" parent="." instance=ExtResource( 1 )]
 position = Vector2( -130, 160 )
+pileMarker = 0
 maxCardSeparation = Vector2( 26, 32 )
 size = Vector2( 52, 64 )
 perPieceCollider = true
 
 [node name="Pile7" parent="." instance=ExtResource( 1 )]
 position = Vector2( -156, 192 )
+pileMarker = 0
 maxCardSeparation = Vector2( 26, 32 )
 size = Vector2( 26, 32 )
 perPieceCollider = true

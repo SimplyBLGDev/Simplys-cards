@@ -138,7 +138,7 @@ func set_zoom(playAreaA, playAreaB):
 		$UIOff.scale = Vector2(1, 1) * playArea.x / 1280
 	$UIOff.global_position = camera.global_position
 
-func on_window_resized():
+func _on_window_resized():
 	set_zoom(currentPlayArea.position, currentPlayArea.position + currentPlayArea.size)
 
 func new_game():

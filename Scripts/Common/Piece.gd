@@ -39,6 +39,7 @@ func update_sprite():
 		$Sprite.frame_coords = Vector2(backIX, 0)
 
 func flip(customSpeed = 1):
+	$Animator.stop()
 	faceUp = !faceUp
 	$Animator.play("Turn", -1, abs(customSpeed), customSpeed<0)
 

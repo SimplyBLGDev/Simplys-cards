@@ -11,12 +11,12 @@ signal _pile_doubleClicked
 signal _pile_emptied
 signal _shuffle_over
 
-enum ForceCardFace { DISABLED, FORCE_UP, FORCE_DOWN}
+enum PileMarkers { None, Standard, SuitPile }
+export var pileMarker = PileMarkers.Standard
 
 export var cardPosAnimationLength = 0.5
 
 export var maxCardSeparation = Vector2(0, -5)
-export var forceCardFace = ForceCardFace.DISABLED
 export var size = Vector2(50, 50)
 export var disableSorting = false
 
