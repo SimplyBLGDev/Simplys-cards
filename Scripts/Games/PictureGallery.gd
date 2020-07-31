@@ -43,8 +43,7 @@ func setupGame():
 
 func _is_piece_grabbable(piece):
 	var pile = piece.get_pile()
-	if pile in blockedPiles:
-		return false
+	
 	if pile in acesPile or pile == deck:
 		return false
 	elif pile in handPiles:
@@ -53,8 +52,6 @@ func _is_piece_grabbable(piece):
 		return pile.top() == piece
 
 func _are_pieces_placeable(pieces, pile):
-	if pile in blockedPiles:
-		return false
 	var lastCard = null
 	if len(pile.pieces) != 0:
 		lastCard = pile.top()
@@ -101,8 +98,6 @@ func _piece_dependencies(piece):
 	return [piece]
 
 func _on_hand_card_taken(pile):
-	if pile in blockedPiles:
-		return
 	if len(pile.pieces) == 0 and len(deck.pieces) > 0:
 		deck.top().flip()
 		pile.add_piece(deck.top())
@@ -146,8 +141,6 @@ func dealNextCard():
 	emit_signal("dealNextCard")
 
 func _on_Deck__pile_clicked(pile):
-	if deck in blockedPiles:
-		return
 	blockedPiles.append(deck)
 	blockedPiles += handPiles
 	$AnimationPlayer.play("PictureGalleryDealHand")

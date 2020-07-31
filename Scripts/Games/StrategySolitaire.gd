@@ -35,22 +35,18 @@ func setupGame():
 	deal()
 
 func _is_piece_grabbable(piece):
-	if piece.get_pile() in blockedPiles:
-		return false
+	var pile = piece.get_pile()
 	
-	if piece.get_pile() == deck:
+	if pile == deck:
 		return piece == deck.top()
-	elif piece.get_pile() in piles:
+	elif pile in piles:
 		return piece == piece.get_pile().top() and deck.isEmpty()
-	elif piece.get_pile() in suitPiles:
+	elif pile in suitPiles:
 		return piece.value == 0
 	
 	return false
 
 func _are_pieces_placeable(pieces, pile):
-	if pieces[0].get_pile() in blockedPiles:
-		return false
-	
 	if pile in suitPiles:
 		if !deck.isEmpty():
 			return pieces[0].value == 0
@@ -81,6 +77,8 @@ func deck_card_taken(pile):
 		deck.top().flip()
 
 func deal():
+	blockedPiles += piles
+	blockedPiles.append(deck)
 	gatherPiecesTo("DeckCards", deck)
 	yield(self, "GatherFinished")
 	
@@ -88,5 +86,6 @@ func deal():
 		card.faceUp = false
 		card.update_sprite()
 	
+	blockedPiles = []
 	deck.shuffle()
 	deck.top().flip()

@@ -1,7 +1,7 @@
 extends Game
 
 # SETTINGS
-export var roundLimit = 3
+export var roundLimit = 5
 # SETTINGS
 
 var deck
@@ -40,20 +40,17 @@ func setupGame():
 
 func _is_piece_grabbable(piece):
 	var pile = piece.get_pile()
-	if pile in blockedPiles:
-		return false
 	
-	if pile in pyramidPiles or pile == deckFlip:
+	if pile in pyramidPiles:
+		return piece == pile.top() and is_pyramid_pile_top_accesible(pile)
+	if pile == deckFlip:
 		return piece == pile.top()
 	
 	return false
 
 func _are_pieces_placeable(pieces, pile):
-	if pile in blockedPiles:
-		return false
-	
 	if pile in pyramidPiles and !pile.isEmpty():
-		return pieces[0].value + pile.top().value == 11
+		return pieces[0].value + pile.top().value == 11 and is_pyramid_pile_top_accesible(pile)
 	elif pile == result:
 		return pieces[0].value == 12
 	elif pieces[0].get_pile() == deck:
@@ -63,39 +60,54 @@ func _are_pieces_placeable(pieces, pile):
 func _piece_dependencies(piece):
 	return [piece]
 
+func is_pyramid_pile_top_accesible(pile):
+	if pyramidPiles.find(pile) == 6:
+		return true
+	var prevPile = pyramidPiles[pyramidPiles.find(pile) + 1]
+	return len(pile.pieces) > len(prevPile.pieces)
+
 func on_pyramid_pile_click(pile):
 	if !pile.isEmpty():
-		if pile.top().value == 12:
+		if pile.top().value == 12 and is_pyramid_pile_top_accesible(pile):
 			result.add_piece(pile.top())
+
+func on_deck_click(pile):
+	if len(deck.pieces) == 0:
+		if !deckFlip.isEmpty() and rounds < roundLimit:
+			blockedPiles.append(deck)
+			blockedPiles.append(deckFlip)
+			
+			var flipCards = len(deckFlip.pieces) - 1 # Leave one deckflip
+			
+			deckFlip.disableSorting = true
+			for cCard in flipCards:
+				deckFlip.top().flip()
+				deck.add_piece(deckFlip.top())
+			
+			deckFlip.disableSorting = false
+			blockedPiles.erase(deck)
+			blockedPiles.erase(deckFlip)
+			deck.top().flip() # re-reveal top card
+			rounds += 1
+	else:
+		deckFlip.add_piece(deck.top())
+		if len(deck.pieces) > 0:
+			deck.top().flip()
+
+func _on_piece_placed(pile):
+	if pile in pyramidPiles:
+		result.add_pieces([pile.top(), pile.pieces[-2]])
 	
 	if deckFlip.isEmpty() and !deck.isEmpty():
 		deckFlip.add_piece(deck.top())
 		if !deck.isEmpty():
 			deck.top().flip()
-
-func on_deck_click(pile):
-	if len(deck.cards) == 0:
-		if !deckFlip.isEmpty() and rounds < roundLimit:
-			for card in deckFlip.pieces:
-				deckFlip.top().flip()
-				deck.add_piece(deckFlip.top())
-				rounds += 1
-	else:
-		deckFlip.add_piece(deck.top())
-		if len(deck.cards) > 0:
-			deck.top().flip()
-
-func _on_piece_placed(pile):
-	if pile in blockedPiles:
-		return
-	
-	if pile in pyramidPiles:
-		result.add_pieces([pile.top(), pile.pieces[-2]])
 	
 	var win = true
 	
-	if len(result.pieces) != 52:
-		win = false
+	for pile in pyramidPiles:
+		if len(pile.pieces) != 0:
+			win = false
 	
 	if win:
 		results["Completion Time"] = Utils.format_time(time)
@@ -124,7 +136,7 @@ func deal():
 	
 	blockedPiles = []
 	time = 0
-	rounds = 0
+	rounds = 1
 	moves = 0
 	undos = 0
 

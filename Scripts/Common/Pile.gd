@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Pile
 
+# Signals are only sent while the pile is not blocked (so user provoked, shifting
+# pieces programatically will not throw a signal
 signal _piece_grabbed
 signal _piece_released
 signal _piece_taken
@@ -50,6 +52,9 @@ func shuffle():
 	yield($Tween, "tween_all_completed")
 	emit_signal("_shuffle_over")
 
+func blocked():
+	return GameController.currentGameMaster.isPileBlocked(self)
+
 func add_piece(piece):
 	pieces.append(piece)
 	var gp
@@ -65,7 +70,8 @@ func add_piece(piece):
 	piece.connect("_on_piece_grabbed", self, "_on_piece_grabbed")
 	sort_pieces()
 	
-	emit_signal("_piece_placed", self)
+	if not blocked():
+		emit_signal("_piece_placed", self)
 
 func add_pieces(newPieces):
 	for piece in newPieces:
@@ -83,7 +89,8 @@ func add_pieces(newPieces):
 		piece.connect("_on_piece_grabbed", self, "_on_piece_grabbed")
 	sort_pieces()
 	
-	emit_signal("_piece_placed", self)
+	if not blocked():
+		emit_signal("_piece_placed", self)
 
 func add_piece_instantaneous(piece):
 	pieces.append(piece)
@@ -96,7 +103,23 @@ func add_piece_instantaneous(piece):
 	piece.connect("_on_piece_grabbed", self, "_on_piece_grabbed")
 	piece.position = get_next_piece_position()
 	
-	emit_signal("_piece_placed")
+	# add_piece_istantaneous can only be called programatically so no need to check
+	#if not blocked():
+	#	emit_signal("_piece_placed")
+	return
+
+func _on_piece_taken(piece):
+	remove_piece(piece)
+	sort_pieces()
+	
+	if not blocked():
+		emit_signal("_piece_taken", self)
+
+func _on_piece_grabbed(piece):
+	$Tween.remove(piece, "position")
+	
+	if not blocked():
+		emit_signal("_piece_grabbed")
 
 func get_next_piece_position():
 	var separation = maxCardSeparation
@@ -114,7 +137,7 @@ func remove_piece(piece):
 	piece.disconnect("_on_piece_grabbed", self, "_on_piece_grabbed")
 	sort_pieces()
 	
-	if len(pieces) == 0:
+	if not blocked() and len(pieces) == 0:
 		emit_signal("_pile_emptied")
 
 func sort_pieces():
@@ -142,15 +165,6 @@ func top():
 func isEmpty():
 	return len(pieces) == 0
 
-func _on_piece_taken(piece):
-	remove_piece(piece)
-	sort_pieces()
-	emit_signal("_piece_taken", self)
-
-func _on_piece_grabbed(piece):
-	$Tween.remove(piece, "position")
-	emit_signal("_piece_grabbed")
-
 func generate_per_piece_collider():
 	var pos = maxCardSeparation
 	while abs(pos.x) < abs(size.x) or abs(pos.y) < abs(size.y):
@@ -164,6 +178,8 @@ func generate_per_piece_collider():
 		pos += maxCardSeparation
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
+	if blocked():
+		return
 	if event is InputEventMouseButton:
 		if event.pressed:
 			emit_signal("_pile_clicked", self)

@@ -10,7 +10,6 @@ var currentHoverGame = null
 
 func _ready():
 	$Tween.connect("tween_completed", self, "tween_completed")
-	GameController.set_zoom($PlayArea.global_position, $PlayArea2.global_position)
 	
 	$KlondikeSolitaire/AnimationPlayer.play("KlondikeSolitaireIcon")
 	$"Strategy+/AnimationPlayer".play("StrategyPlusIcon")

@@ -4,16 +4,17 @@ class_name Game
 
 signal GatherFinished
 
+var allPiles = []
 var blockedPiles = []
 export var dealSpeed = 1.0
 export var gatherSpeed = 0.05
 
 func _ready():
 	GameController.currentGameMaster = self
-	GameController.set_zoom($PlayArea.global_position, $PlayArea2.global_position)
+	
 	yield(self, "ready")
 	setupGame()
-	var allPiles = get_tree().get_nodes_in_group("Piles")
+	allPiles = get_tree().get_nodes_in_group("Piles")
 	for __pile in allPiles:
 		if is_a_parent_of(__pile):
 			__pile.get_parent().connect("_piece_placed", self, "_on_piece_placed")
@@ -37,6 +38,36 @@ func gatherPiecesTo(group, pile):
 
 func setupGame():
 	pass
+
+func isPileBlocked(pile):
+	return pile in blockedPiles
+
+func internal_is_piece_grabbable(piece):
+	if piece.get_pile() in blockedPiles:
+		return false
+	
+	return _is_piece_grabbable(piece)
+
+func internal_are_pieces_placeable(pieces, pile):
+	if pile in blockedPiles:
+		return false
+	for piece in pieces:
+		if piece.get_pile() in blockedPiles:
+			return false
+	
+	return _are_pieces_placeable(pieces, pile)
+
+func internal_piece_dependencies(piece):
+	if piece.get_pile() in blockedPiles:
+		return false
+	
+	return _piece_dependencies(piece)
+
+func internal_on_piece_placed(pile):
+	if pile in blockedPiles:
+		return false
+	
+	return _on_piece_placed(pile)
 
 func _is_piece_grabbable(piece):
 	return true

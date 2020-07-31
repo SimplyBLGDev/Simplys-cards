@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Common/Pile.gd"
 }, {
+"base": "ReferenceRect",
+"class": "PlayArea",
+"language": "GDScript",
+"path": "res://Scripts/Common/PlayArea.gd"
+}, {
 "base": "Pile",
 "class": "ShowPile",
 "language": "GDScript",
@@ -44,6 +49,7 @@ _global_script_class_icons={
 "Game": "",
 "Piece": "",
 "Pile": "",
+"PlayArea": "",
 "ShowPile": "",
 "SmoothSprite": ""
 }

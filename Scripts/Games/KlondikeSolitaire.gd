@@ -44,8 +44,6 @@ func setupGame():
 	deal()
 
 func _on_deck_click(pile):
-	if deck in blockedPiles:
-		return
 	if len(deck.pieces) == 0 and len(deckFlip.pieces) > 0:
 		flip_deck_flip_cards()
 	else:
@@ -61,8 +59,6 @@ func _on_sPile_card_taken(pile):
 
 func _is_piece_grabbable(piece):
 	var pile = piece.get_pile()
-	if pile in blockedPiles:
-		return false
 	
 	if pile in standardPiles:
 		return piece.faceUp

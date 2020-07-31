@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Games/PictureGallery.gd" type="Script" id=1]
 [ext_resource path="res://Prefabs/Pile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Common/DeckGenerator.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Common/PlayArea.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "PictureGalleryDeal"
@@ -161,6 +162,16 @@ __meta__ = {
 "_edit_lock_": true
 }
 dealSpeed = 3.0
+
+[node name="PlayArea" type="ReferenceRect" parent="."]
+margin_left = -192.0
+margin_top = -168.0
+margin_right = 192.0
+margin_bottom = 384.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Deck" parent="." instance=ExtResource( 2 )]
 position = Vector2( 168, 128 )
@@ -336,12 +347,6 @@ size = Vector2( 5, -5 )
 position = Vector2( 168, -120 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 5, -5 )
-
-[node name="PlayArea" type="Position2D" parent="."]
-position = Vector2( -190, -174 )
-
-[node name="PlayArea2" type="Position2D" parent="."]
-position = Vector2( 192, 384 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/PictureGalleryDeal = SubResource( 1 )

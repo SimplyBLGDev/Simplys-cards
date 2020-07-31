@@ -37,7 +37,7 @@ func _input(event):
 			dragToPosition = get_global_mouse_position()
 	elif event is InputEventMouseButton:
 		if !event.is_pressed() and currentDrag != null:
-			on_piece_release(currentDrag)
+			release_pieces(currentDrag)
 		elif event.is_pressed() and currentDrag == null:
 			var clicked = get_top_group_node_at_point(
 				get_global_mouse_position(), "Pieces")
@@ -79,15 +79,15 @@ func process_piece_dragging():
 			posDelta/movementAngleBySpeedModifier)
 
 func grab_piece(piece):
-	if currentGameMaster._is_piece_grabbable(piece):
-		var dependencies = currentGameMaster._piece_dependencies(piece)
+	if currentGameMaster.internal_is_piece_grabbable(piece):
+		var dependencies = currentGameMaster.internal_piece_dependencies(piece)
 		currentDrag = dependencies
 		for p in dependencies:
 			dragToPosition = null
 			p.z_index += 5
 			piece.emit_signal("_on_piece_grabbed", p)
 
-func on_piece_release(pieces):
+func release_pieces(pieces):
 	var deposit = get_top_group_node_at_point(
 				get_global_mouse_position(), "Piles")
 	
@@ -100,7 +100,7 @@ func on_piece_release(pieces):
 			fmod(p.rotation, PI), 0, 0.65, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
 	$UncancellableTween.start()
 	
-	if deposit != null and currentGameMaster._are_pieces_placeable(pieces, deposit):
+	if deposit != null and currentGameMaster.internal_are_pieces_placeable(pieces, deposit):
 		deposit.add_pieces(currentDrag)
 	else:
 		pieces[0].get_pile().sort_pieces()
@@ -118,10 +118,10 @@ func take_held_piece():
 	r.emit_signal("_on_piece_taken", r)
 	return r
 
-func set_zoom(playAreaA, playAreaB):
+func set_zoom(newPlayArea):
+	currentPlayArea = newPlayArea
 	var vRect = get_viewport_rect()
-	var playArea = playAreaB - playAreaA
-	currentPlayArea = Rect2(playAreaA.x, playAreaA.y, playArea.x, playArea.y)
+	var playArea = currentPlayArea.size
 	var playAreaAspect = playArea.x / playArea.y
 	var r = 1
 	var aspectScreen = get_viewport_rect().size.x / get_viewport_rect().size.y
@@ -130,7 +130,7 @@ func set_zoom(playAreaA, playAreaB):
 	else:
 		r = playArea.y /  get_viewport_rect().size.y
 	
-	camera.global_position = playAreaA + playArea/2
+	camera.global_position = currentPlayArea.position + playArea/2
 	camera.zoom = Vector2(1, 1) * r
 	if playAreaAspect < 1:
 		$UIOff.scale = Vector2(1, 1) * playArea.y / 720
@@ -139,7 +139,7 @@ func set_zoom(playAreaA, playAreaB):
 	$UIOff.global_position = camera.global_position
 
 func _on_window_resized():
-	set_zoom(currentPlayArea.position, currentPlayArea.position + currentPlayArea.size)
+	set_zoom(currentPlayArea)
 
 func new_game():
 	currentGameMaster.deal()

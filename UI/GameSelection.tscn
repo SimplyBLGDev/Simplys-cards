@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://UI/Prefabs/GameIcon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Tilesets/Cards/StandardDeckv2.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Sprites/Transparent.png" type="Texture" id=9]
 [ext_resource path="res://Sprites/SquareMask.png" type="Texture" id=10]
 [ext_resource path="res://Prefabs/Cosmetic/PileSprite.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scripts/Common/PlayArea.gd" type="Script" id=12]
 
 [sub_resource type="Animation" id=1]
 length = 6.0
@@ -331,15 +332,17 @@ tracks/10/keys = {
 position = Vector2( -1, 0 )
 script = ExtResource( 4 )
 
+[node name="PlayArea" type="ReferenceRect" parent="."]
+margin_left = -607.0
+margin_top = -1072.0
+margin_right = 609.0
+margin_bottom = 1080.0
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Tween" type="Tween" parent="."]
-
-[node name="PlayArea" type="Position2D" parent="."]
-position = Vector2( -614.4, -1075.2 )
-scale = Vector2( 0.25, 0.25 )
-
-[node name="PlayArea2" type="Position2D" parent="."]
-position = Vector2( 614.4, 1075.2 )
-scale = Vector2( 0.25, 0.25 )
 
 [node name="KlondikeSolitaire" parent="." instance=ExtResource( 1 )]
 displayName = "Klondike Solitaire"

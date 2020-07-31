@@ -88,8 +88,6 @@ func _piece_dependencies(piece):
 	return [piece]
 
 func _on_deck_click(pile):
-	if deck in blockedPiles:
-		return
 	blockedPiles.append(deck)
 	blockedPiles += standardPiles
 	$AnimationPlayer.play("SpiderSolitaireDealHand")
