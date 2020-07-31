@@ -7,7 +7,7 @@ enum TimeFormat {
 	FORMAT_DEFAULT = 7
 }
 
-func format_time(time, format = TimeFormat.FORMAT_DEFAULT, digit_format = "%02d"):
+static func format_time(time, format = TimeFormat.FORMAT_DEFAULT, digit_format = "%02d"):
 	var digits = []
 
 	if format & TimeFormat.FORMAT_HOURS:
@@ -33,5 +33,5 @@ func format_time(time, format = TimeFormat.FORMAT_DEFAULT, digit_format = "%02d"
 
 	return formatted
 
-func rand_range_i(from, to):
+static func rand_range_i(from, to):
 	return from + randi()%(to-from)

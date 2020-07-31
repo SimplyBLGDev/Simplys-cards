@@ -39,14 +39,16 @@ func _input(event):
 		if !event.is_pressed() and currentDrag != null:
 			release_pieces(currentDrag)
 		elif event.is_pressed() and currentDrag == null:
-			var clicked = get_top_group_node_at_point(
+			var clicked = get_top_group_nodes_at_point(
 				get_global_mouse_position(), "Pieces")
-			if clicked != null:
-				grab_piece(clicked.get_parent())
-	elif event is InputEventKey:
-		if !event.is_pressed():
-			if event.scancode == 87: #W
-				currentGameMaster.win(1, currentGameMaster.results)
+			if len(clicked) > 0:
+				grab_piece(clicked)
+	
+	if OS.is_debug_build():
+		if event is InputEventKey: # DEBUG
+			if !event.is_pressed():
+				if event.scancode == 87: #W
+					currentGameMaster.win(1, currentGameMaster.results)
 
 func get_top_group_node_at_point(point, group):
 	var minNode = null
@@ -58,6 +60,21 @@ func get_top_group_node_at_point(point, group):
 			if minNode == null or i["collider"].is_greater_than(minNode):
 				minNode = i["collider"] # Filter lowest node in tree
 	return minNode
+
+func get_top_group_nodes_at_point(point, group):
+	var intersects = get_world_2d().direct_space_state.intersect_point(
+			point, 128, [], 2147483647, false, true)
+	var nodes = []
+	
+	for i in intersects:
+		if i["collider"].is_in_group(group):
+			nodes.append(i["collider"].get_parent())
+	
+	nodes.sort_custom(self, "sort_nodes_by_tree_position")
+	return nodes
+
+static func sort_nodes_by_tree_position(a, b):
+	return a.is_greater_than(b)
 
 func process_piece_dragging():
 	for i in len(currentDrag):
@@ -78,21 +95,20 @@ func process_piece_dragging():
 		currentDrag[i].rotation = lerp_angle(0, newAngle + PI/2,
 			posDelta/movementAngleBySpeedModifier)
 
-func grab_piece(piece):
-	if currentGameMaster.internal_is_piece_grabbable(piece):
-		var dependencies = currentGameMaster.internal_piece_dependencies(piece)
-		currentDrag = dependencies
-		for p in dependencies:
-			dragToPosition = null
-			p.z_index += 5
-			piece.emit_signal("_on_piece_grabbed", p)
+func grab_piece(pieces):
+	for piece in pieces:
+		if currentGameMaster.internal_is_piece_grabbable(piece):
+			var dependencies = currentGameMaster.internal_piece_dependencies(piece)
+			currentDrag = dependencies
+			for p in dependencies:
+				dragToPosition = null
+				p.z_index += 5
+				piece.emit_signal("_on_piece_grabbed", p)
+				return
 
 func release_pieces(pieces):
-	var deposit = get_top_group_node_at_point(
+	var deposits = get_top_group_nodes_at_point(
 				get_global_mouse_position(), "Piles")
-	
-	if deposit != null:
-		deposit = deposit.get_parent()
 	
 	for p in pieces:
 		p.z_index -= 5
@@ -100,9 +116,16 @@ func release_pieces(pieces):
 			fmod(p.rotation, PI), 0, 0.65, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
 	$UncancellableTween.start()
 	
-	if deposit != null and currentGameMaster.internal_are_pieces_placeable(pieces, deposit):
-		deposit.add_pieces(currentDrag)
-	else:
+	var deposited = false
+	
+	if len(deposits) > 0:
+		for deposit in deposits:
+			if currentGameMaster.internal_are_pieces_placeable(pieces, deposit):
+				deposit.add_pieces(currentDrag)
+				deposited = true
+				break
+	
+	if not deposited:
 		pieces[0].get_pile().sort_pieces()
 	
 	currentDrag = null

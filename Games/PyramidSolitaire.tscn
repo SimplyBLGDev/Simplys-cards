@@ -113,9 +113,9 @@ script = ExtResource( 4 )
 dealSpeed = 0.3
 
 [node name="PlayArea" type="ReferenceRect" parent="."]
-margin_left = -216.0
-margin_top = -48.0
-margin_right = 208.0
+margin_left = -176.0
+margin_top = -40.0
+margin_right = 176.0
 margin_bottom = 232.0
 script = ExtResource( 3 )
 __meta__ = {
@@ -123,7 +123,7 @@ __meta__ = {
 }
 
 [node name="Deck" parent="." instance=ExtResource( 1 )]
-position = Vector2( -192, -8 )
+position = Vector2( -152, 0 )
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 5, -5 )
 
@@ -133,12 +133,12 @@ suits = [ 1, 2, 3, 4 ]
 values = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
 
 [node name="DeckFlip" parent="." instance=ExtResource( 1 )]
-position = Vector2( -192, 72 )
+position = Vector2( -152, 72 )
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 5, -5 )
 
 [node name="ResultPile" parent="." instance=ExtResource( 1 )]
-position = Vector2( 184, -8 )
+position = Vector2( 152, 0 )
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 5, -5 )
 
