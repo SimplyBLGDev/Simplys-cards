@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/Fonts/Roboto-Thin.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/Prefabs/PolygonButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Animations/RibbonWin.tres" type="Animation" id=3]
 [ext_resource path="res://UI/Animations/WinRibbon.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/UI/SlopedPolygon.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 96
@@ -132,8 +133,12 @@ scale = Vector2( 0.75, 0.75 )
 
 [node name="Buttons BG" type="Polygon2D" parent="Buttons"]
 color = Color( 0.333333, 0.678431, 0.933333, 1 )
+offset = Vector2( 5, 5 )
 antialiased = true
-polygon = PoolVector2Array( -613.333, -86.6667, -720, 99.9999, 613.333, 99.9999, 720, -86.6667 )
+polygon = PoolVector2Array( -615, -95, -725, 95, 615, 95, 725, -95 )
+script = ExtResource( 5 )
+slope = 110.0
+size = Vector2( 1450, 190 )
 
 [node name="MenuButton" parent="Buttons/Buttons BG" instance=ExtResource( 2 )]
 position = Vector2( -326.667, 0 )
