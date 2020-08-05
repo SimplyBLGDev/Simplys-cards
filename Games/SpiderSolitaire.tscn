@@ -229,19 +229,22 @@ tracks/0/keys = {
 
 [node name="SpiderSolitaire" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="PlayArea" type="ReferenceRect" parent="."]
-margin_left = -16.0
-margin_top = -88.0
-margin_right = 464.0
-margin_bottom = 376.0
+margin_left = -240.0
+margin_top = -264.0
+margin_right = 240.0
+margin_bottom = 200.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Deck" parent="." instance=ExtResource( 2 )]
-position = Vector2( 8, -48 )
+position = Vector2( -216, -224 )
 maxCardSeparation = Vector2( 0.1, -0.1 )
 size = Vector2( 10, -10 )
 
@@ -250,99 +253,99 @@ script = ExtResource( 3 )
 values = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
 
 [node name="SPile1" parent="." instance=ExtResource( 2 )]
-position = Vector2( 8, 32 )
+position = Vector2( -216, -144 )
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 250 )
 
 [node name="SPile2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 56, 32 )
+position = Vector2( -168, -144 )
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 250 )
 
 [node name="SPile3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 104, 32 )
+position = Vector2( -120, -144 )
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 250 )
 
 [node name="SPile4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 152, 32 )
+position = Vector2( -72, -144 )
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 250 )
 
 [node name="SPile5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 200, 32 )
+position = Vector2( -24, -144 )
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 250 )
 
 [node name="SPile6" parent="." instance=ExtResource( 2 )]
-position = Vector2( 248, 32 )
+position = Vector2( 24, -144 )
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 250 )
 
 [node name="SPile7" parent="." instance=ExtResource( 2 )]
-position = Vector2( 296, 32 )
+position = Vector2( 72, -144 )
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 250 )
 
 [node name="SPile8" parent="." instance=ExtResource( 2 )]
-position = Vector2( 344, 32 )
+position = Vector2( 120, -144 )
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 250 )
 
 [node name="SPile9" parent="." instance=ExtResource( 2 )]
-position = Vector2( 392, 32 )
+position = Vector2( 168, -144 )
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 250 )
 
 [node name="SPile10" parent="." instance=ExtResource( 2 )]
-position = Vector2( 440, 32 )
+position = Vector2( 216, -144 )
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 250 )
 
 [node name="SuitPile1" parent="." instance=ExtResource( 2 )]
-position = Vector2( 104, -48 )
+position = Vector2( -120, -224 )
 pileMarker = 2
 maxCardSeparation = Vector2( 0.5, -0.5 )
 size = Vector2( 5, -5 )
 
 [node name="SuitPile2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 152, -48 )
+position = Vector2( -72, -224 )
 pileMarker = 2
 maxCardSeparation = Vector2( 0.5, -0.5 )
 size = Vector2( 5, -5 )
 
 [node name="SuitPile3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 200, -48 )
+position = Vector2( -24, -224 )
 pileMarker = 2
 maxCardSeparation = Vector2( 0.5, -0.5 )
 size = Vector2( 5, -5 )
 
 [node name="SuitPile4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 248, -48 )
+position = Vector2( 24, -224 )
 pileMarker = 2
 maxCardSeparation = Vector2( 0.5, -0.5 )
 size = Vector2( 5, -5 )
 
 [node name="SuitPile5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 296, -48 )
+position = Vector2( 72, -224 )
 pileMarker = 2
 maxCardSeparation = Vector2( 0.5, -0.5 )
 size = Vector2( 5, -5 )
 
 [node name="SuitPile6" parent="." instance=ExtResource( 2 )]
-position = Vector2( 344, -48 )
+position = Vector2( 120, -224 )
 pileMarker = 2
 maxCardSeparation = Vector2( 0.5, -0.5 )
 size = Vector2( 5, -5 )
 
 [node name="SuitPile7" parent="." instance=ExtResource( 2 )]
-position = Vector2( 392, -48 )
+position = Vector2( 168, -224 )
 pileMarker = 2
 maxCardSeparation = Vector2( 0.5, -0.5 )
 size = Vector2( 5, -5 )
 
 [node name="SuitPile8" parent="." instance=ExtResource( 2 )]
-position = Vector2( 440, -48 )
+position = Vector2( 216, -224 )
 pileMarker = 2
 maxCardSeparation = Vector2( 0.5, -0.5 )
 size = Vector2( 5, -5 )

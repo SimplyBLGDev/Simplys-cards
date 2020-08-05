@@ -16,6 +16,7 @@ func _ready():
 	$PictureGallery/AnimationPlayer.play("PictureGalleryIcon")
 	$SpiderSolitaire/AnimationPlayer.play("SpiderSolitaireIcon")
 	$PyramidSolitaire/AnimationPlayer.play("PyramidSolitaireIcon", -1, 0.75)
+	$Truco/AnimationPlayer.play("TrucoIcon")
 	
 	# Klondike Solitaire
 	klondikeSolitaire_setup()
@@ -143,10 +144,10 @@ func pyramidSolitaire_randomize(stage):
 	match stage:
 		0:
 			$PyramidSolitaire/PyramidIcon/CardD.frame_coords = Vector2(
-				12 - cardB, Utils.rand_range_i(1, 5))
+				11 - cardB, Utils.rand_range_i(1, 5))
 		1:
 			$PyramidSolitaire/PyramidIcon/CardD.frame_coords = Vector2(
-				12 - cardA, Utils.rand_range_i(1, 5))
+				11 - cardA, Utils.rand_range_i(1, 5))
 		2:
 			$PyramidSolitaire/PyramidIcon/CardB.frame_coords = (
 				$PyramidSolitaire/PyramidIcon/CardC.frame_coords)

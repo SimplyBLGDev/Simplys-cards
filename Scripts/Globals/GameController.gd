@@ -1,5 +1,7 @@
 extends Node2D
 
+const VERSION = "Pre-Alpha 0.3.0"
+
 # Minimum speed for card to reach cursor
 const minCardApproach = 1.5
  # Speed to reach cursor proportional to the distance to the point
@@ -9,7 +11,8 @@ const movementAngleBySpeedModifier = 400
 
 onready var camera = $Camera2D
 onready var root = get_tree().get_root()
-onready var UI = $UIOff/UI
+onready var UI = $Canvas/UIOff/UI
+onready var pieceGfx = $PieceGraphicsController
 
 var playerId = 0
 var teamId = 0
@@ -25,6 +28,7 @@ var currentGameMaster
 
 func _ready():
 	get_tree().get_root().connect("size_changed", self, "_on_window_resized")
+	$"ControlUI/Version Label".text = VERSION
 	randomize()
 
 func _physics_process(delta):
@@ -32,6 +36,7 @@ func _physics_process(delta):
 		process_piece_dragging()
 
 func _input(event):
+	
 	if event is InputEventMouseMotion:
 		if currentDrag != null:
 			dragToPosition = get_global_mouse_position()
@@ -104,7 +109,7 @@ func grab_piece(pieces):
 				dragToPosition = null
 				p.z_index += 5
 				piece.emit_signal("_on_piece_grabbed", p)
-				return
+			return
 
 func release_pieces(pieces):
 	var deposits = get_top_group_nodes_at_point(
@@ -147,19 +152,18 @@ func set_zoom(newPlayArea):
 	var playArea = currentPlayArea.size
 	var playAreaAspect = playArea.x / playArea.y
 	var r = 1
-	var aspectScreen = get_viewport_rect().size.x / get_viewport_rect().size.y
+	var aspectScreen = vRect.size.x / vRect.size.y
 	if aspectScreen < playAreaAspect:
-		r = playArea.x / get_viewport_rect().size.x
+		r = playArea.x / vRect.size.x
 	else:
-		r = playArea.y /  get_viewport_rect().size.y
+		r = playArea.y / vRect.size.y
 	
 	camera.global_position = currentPlayArea.position + playArea/2
 	camera.zoom = Vector2(1, 1) * r
-	if playAreaAspect < 1:
-		$UIOff.scale = Vector2(1, 1) * playArea.y / 720
-	else:
-		$UIOff.scale = Vector2(1, 1) * playArea.x / 1280
-	$UIOff.global_position = camera.global_position
+	UI.scale = (Vector2(1, 1) / r) * min(playArea.x / 1280, playArea.y / 720)
+	
+	$Canvas.offset = get_viewport_rect().size / 2
+	#+ playArea / r / 1280
 
 func _on_window_resized():
 	set_zoom(currentPlayArea)
@@ -179,6 +183,7 @@ func set_game(game):
 			"Spider Solitaire": add_child(load("res://Games/SpiderSolitaire.tscn").instance())
 			"Pyramid Solitaire": add_child(load("res://Games/PyramidSolitaire.tscn").instance())
 			"Free Cell": add_child(load("res://Games/FreeCell.tscn").instance())
+			"Truco": add_child(load("res://Games/Truco.tscn").instance())
 		
 		get_tree().get_root().get_node("root/GameSelection").queue_free()
 
@@ -187,3 +192,4 @@ func play_SFX(piece):
 
 func set_UI(node):
 	UI.add_child(node)
+	#node.global_position = camera.global_position

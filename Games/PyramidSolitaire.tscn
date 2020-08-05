@@ -110,20 +110,23 @@ tracks/0/keys = {
 
 [node name="PyramidSolitaire" type="Node2D"]
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
 dealSpeed = 0.3
 
 [node name="PlayArea" type="ReferenceRect" parent="."]
 margin_left = -176.0
-margin_top = -40.0
+margin_top = -136.0
 margin_right = 176.0
-margin_bottom = 232.0
+margin_bottom = 136.0
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Deck" parent="." instance=ExtResource( 1 )]
-position = Vector2( -152, 0 )
+position = Vector2( -152, -96 )
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 5, -5 )
 
@@ -133,58 +136,59 @@ suits = [ 1, 2, 3, 4 ]
 values = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
 
 [node name="DeckFlip" parent="." instance=ExtResource( 1 )]
-position = Vector2( -152, 72 )
+position = Vector2( -152, -24 )
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 5, -5 )
 
 [node name="ResultPile" parent="." instance=ExtResource( 1 )]
-position = Vector2( 152, 0 )
+position = Vector2( 152, -96 )
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 5, -5 )
 
 [node name="Pile1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -96 )
 pileMarker = 0
 maxCardSeparation = Vector2( 26, 32 )
 size = Vector2( 182, 224 )
 perPieceCollider = true
 
 [node name="Pile2" parent="." instance=ExtResource( 1 )]
-position = Vector2( -26, 32 )
+position = Vector2( -26, -64 )
 pileMarker = 0
 maxCardSeparation = Vector2( 26, 32 )
 size = Vector2( 156, 192 )
 perPieceCollider = true
 
 [node name="Pile3" parent="." instance=ExtResource( 1 )]
-position = Vector2( -52, 64 )
+position = Vector2( -52, -32 )
 pileMarker = 0
 maxCardSeparation = Vector2( 26, 32 )
 size = Vector2( 130, 160 )
 perPieceCollider = true
 
 [node name="Pile4" parent="." instance=ExtResource( 1 )]
-position = Vector2( -78, 96 )
+position = Vector2( -78, 0 )
 pileMarker = 0
 maxCardSeparation = Vector2( 26, 32 )
 size = Vector2( 104, 128 )
 perPieceCollider = true
 
 [node name="Pile5" parent="." instance=ExtResource( 1 )]
-position = Vector2( -104, 128 )
+position = Vector2( -104, 32 )
 pileMarker = 0
 maxCardSeparation = Vector2( 26, 32 )
 size = Vector2( 78, 96 )
 perPieceCollider = true
 
 [node name="Pile6" parent="." instance=ExtResource( 1 )]
-position = Vector2( -130, 160 )
+position = Vector2( -130, 64 )
 pileMarker = 0
 maxCardSeparation = Vector2( 26, 32 )
 size = Vector2( 52, 64 )
 perPieceCollider = true
 
 [node name="Pile7" parent="." instance=ExtResource( 1 )]
-position = Vector2( -156, 192 )
+position = Vector2( -156, 96 )
 pileMarker = 0
 maxCardSeparation = Vector2( 26, 32 )
 size = Vector2( 26, 32 )

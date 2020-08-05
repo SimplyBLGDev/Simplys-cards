@@ -7,25 +7,29 @@
 
 [node name="Shogi" type="Node2D"]
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BoardController" type="Node2D" parent="."]
+position = Vector2( -144, -152 )
 script = ExtResource( 1 )
 gridSize = Vector2( 9, 9 )
 cellSize = Vector2( 34, 34 )
 
 [node name="Captures0" parent="." instance=ExtResource( 3 )]
-position = Vector2( 368, 288 )
+position = Vector2( 224, 136 )
 size = Vector2( 0, -40 )
 
 [node name="Captures1" parent="." instance=ExtResource( 3 )]
-position = Vector2( -80, 8 )
+position = Vector2( -224, -144 )
 maxCardSeparation = Vector2( 0, 5 )
 
 [node name="PlayArea" type="ReferenceRect" parent="."]
-margin_left = -104.0
-margin_top = -32.0
-margin_right = 392.0
-margin_bottom = 336.0
+margin_left = -248.0
+margin_top = -184.0
+margin_right = 248.0
+margin_bottom = 184.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false

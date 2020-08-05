@@ -42,7 +42,7 @@ _global_script_classes=[ {
 "base": "Polygon2D",
 "class": "SmoothSprite",
 "language": "GDScript",
-"path": "res://SmoothSprite.gd"
+"path": "res://Scripts/Common/SmoothSprite.gd"
 } ]
 _global_script_class_icons={
 "DeckGenerator": "",
@@ -85,7 +85,7 @@ singletons=[  ]
 
 [gui]
 
-theme/custom_font="res://UI/Fonts/Title.tres"
+theme/custom_font="res://UI/Fonts/Text.tres"
 
 [input]
 

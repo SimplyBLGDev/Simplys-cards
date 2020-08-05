@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Transparent.png-e3901c19a2b298ba83de1ae4698eeb1d.stex"
+path="res://.import/SquareMask.png-2da98a0f7bf7696092dbc9c2bb87ae1b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Transparent.png"
-dest_files=[ "res://.import/Transparent.png-e3901c19a2b298ba83de1ae4698eeb1d.stex" ]
+source_file="res://Sprites/Util/SquareMask.png"
+dest_files=[ "res://.import/SquareMask.png-2da98a0f7bf7696092dbc9c2bb87ae1b.stex" ]
 
 [params]
 

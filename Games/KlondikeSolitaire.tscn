@@ -140,9 +140,9 @@ flipAmount = 1
 
 [node name="PlayArea" type="ReferenceRect" parent="."]
 margin_left = -168.0
-margin_top = -144.0
+margin_top = -200.0
 margin_right = 168.0
-margin_bottom = 192.0
+margin_bottom = 136.0
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -151,7 +151,7 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Deck" parent="." instance=ExtResource( 1 )]
-position = Vector2( -144, -104 )
+position = Vector2( -144, -160 )
 z_index = -1
 maxCardSeparation = Vector2( 0.1, -0.1 )
 size = Vector2( 3, -3 )
@@ -165,7 +165,7 @@ suits = [ 1, 2, 3, 4 ]
 values = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
 
 [node name="DeckFlip" parent="." instance=ExtResource( 1 )]
-position = Vector2( -88, -104 )
+position = Vector2( -88, -160 )
 z_index = -1
 script = ExtResource( 4 )
 pileMarker = 0
@@ -174,70 +174,71 @@ size = Vector2( 3, -3 )
 showCardsSeparation = Vector2( 12, 0 )
 
 [node name="SuitPile1" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, -104 )
+position = Vector2( 0, -160 )
 z_index = -1
 pileMarker = 2
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 3, -3 )
 
 [node name="SuitPile2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 48, -104 )
+position = Vector2( 48, -160 )
 z_index = -1
 pileMarker = 2
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 3, -3 )
 
 [node name="SuitPile3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 96, -104 )
+position = Vector2( 96, -160 )
 z_index = -1
 pileMarker = 2
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 3, -3 )
 
 [node name="SuitPile4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 144, -104 )
+position = Vector2( 144, -160 )
 z_index = -1
 pileMarker = 2
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 3, -3 )
 
 [node name="Pile1" parent="." instance=ExtResource( 1 )]
-position = Vector2( -144, 0 )
+position = Vector2( -144, -56 )
 z_index = -1
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 150 )
 
 [node name="Pile2" parent="." instance=ExtResource( 1 )]
-position = Vector2( -96, 0 )
+position = Vector2( -96, -56 )
 z_index = -1
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 150 )
 
 [node name="Pile3" parent="." instance=ExtResource( 1 )]
-position = Vector2( -48, 0 )
+position = Vector2( -48, -56 )
 z_index = -1
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 150 )
 
 [node name="Pile4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -56 )
 z_index = -1
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 150 )
 
 [node name="Pile5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 48, 0 )
+position = Vector2( 48, -56 )
 z_index = -1
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 150 )
 
 [node name="Pile6" parent="." instance=ExtResource( 1 )]
-position = Vector2( 96, 0 )
+position = Vector2( 96, -56 )
 z_index = -1
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 150 )
 
 [node name="Pile7" parent="." instance=ExtResource( 1 )]
-position = Vector2( 144, 0 )
+position = Vector2( 144, -56 )
 z_index = -1
 maxCardSeparation = Vector2( 0, 20 )
 size = Vector2( 0, 150 )

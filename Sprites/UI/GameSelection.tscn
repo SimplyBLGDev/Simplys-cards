@@ -1,17 +1,19 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://UI/Prefabs/GameIcon.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Sprites/Tilesets/Cards/StandardDeckv2.png" type="Texture" id=2]
+[ext_resource path="res://PieceSets/StandardCards/StandardDeckv2.png" type="Texture" id=2]
 [ext_resource path="res://UI/Animations/UIKlondikeSolitaireIcon.tres" type="Animation" id=3]
 [ext_resource path="res://Scripts/UI/GameSelection.gd" type="Script" id=4]
-[ext_resource path="res://Sprites/Tilesets/Shogi/ShogiPieces.png" type="Texture" id=5]
+[ext_resource path="res://PieceSets/ShogiPieces/ShogiPieces.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/UI/Game Selection/Spider.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/UI/Game Selection/SpiderEyes.png" type="Texture" id=7]
 [ext_resource path="res://UI/Animations/UISpiderSolitaireIcon.tres" type="Animation" id=8]
-[ext_resource path="res://Sprites/Transparent.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/SquareMask.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Util/Transparent.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Util/SquareMask.png" type="Texture" id=10]
 [ext_resource path="res://Prefabs/Cosmetic/PileSprite.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scripts/Common/PlayArea.gd" type="Script" id=12]
+[ext_resource path="res://Scripts/Common/SmoothSprite.gd" type="Script" id=13]
+[ext_resource path="res://PieceSets/SpanishCards/SpanishPlayingCards.png" type="Texture" id=14]
 
 [sub_resource type="Animation" id=1]
 length = 6.0
@@ -326,6 +328,63 @@ tracks/10/keys = {
 "args": [ 2 ],
 "method": "pyramidSolitaire_randomize"
 } ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("PyramidIcon/CardC:z_index")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 3.5, 3.52 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -1, -1 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "TrucoIcon"
+length = 6.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("TrucoIcon/Polygon2D:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 2.85816, -0.25, 0, 0.25, 0, 2.85816, -0.25, 0, 0.25, 0, 11.4291, -0.25, 0, 0.25, 0, 20, -0.25, 0, 0.25, 0, 20, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 2, 2.5, 3, 5.4, 5.6 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("TrucoIcon/Polygon2D3:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -2.85816, -0.25, 0, 0.25, 0, -2.85816, -0.25, 0, 0.25, 0, -11.4291, -0.25, 0, 0.25, 0, -20, -0.25, 0, 0.25, 0, -20, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 2, 2.5, 3, 5.4, 5.6 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("TrucoIcon/Polygon2D3:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -4.41064, -0.25, 0, 0.25, 0, -4.41064, -0.25, 0, 0.25, 0, -15.0031, -0.25, 0, 0.25, 0, -15.0031, -0.25, 0, 0.25, 0, -34, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 2, 2.5, 5.4, 5.6, 5.9 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("TrucoIcon/Polygon2D:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 4.41064, -0.25, 0, 0.25, 0, 4.41064, -0.25, 0, 0.25, 0, 15.0031, -0.25, 0, 0.25, 0, 15.0031, -0.25, 0, 0.25, 0, 34, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 2, 2.5, 5.4, 5.6, 5.9 )
 }
 
 [node name="GameSelection" type="Node2D"]
@@ -671,8 +730,7 @@ hframes = 17
 
 [node name="CardB" type="Sprite" parent="PyramidSolitaire/PyramidIcon"]
 light_mask = 1024
-position = Vector2( -551, -344 )
-rotation = -1.48038e-05
+position = Vector2( 185, -96 )
 scale = Vector2( 7.5, 7.5 )
 z_index = -1
 texture = ExtResource( 2 )
@@ -681,7 +739,7 @@ hframes = 17
 
 [node name="CardD" type="Sprite" parent="PyramidSolitaire/PyramidIcon"]
 light_mask = 1024
-position = Vector2( -566.937, 19.987 )
+position = Vector2( 585, -216 )
 scale = Vector2( 7.5, 7.5 )
 z_index = -1
 texture = ExtResource( 2 )
@@ -733,6 +791,54 @@ margin_right = -12.9998
 margin_bottom = 68.0
 rect_rotation = 15.0
 rect_scale = Vector2( 5, 5 )
+
+[node name="Truco" parent="." instance=ExtResource( 1 )]
+position = Vector2( -5000, 0 )
+displayName = "Truco"
+
+[node name="TrucoIcon" type="Node2D" parent="Truco"]
+
+[node name="Polygon2D3" type="Polygon2D" parent="Truco/TrucoIcon"]
+position = Vector2( 0, 30 )
+scale = Vector2( 2, 2 )
+offset = Vector2( 0, -96 )
+antialiased = true
+texture = ExtResource( 14 )
+polygon = PoolVector2Array( -74.1667, -115.8, 74.1667, -115.8, 74.1667, 115.8, -74.1667, 115.8 )
+uv = PoolVector2Array( 890, 694.8, 1038.33, 694.8, 1038.33, 926.4, 890, 926.4 )
+script = ExtResource( 13 )
+hframes = 12
+vframes = 5
+frame_coords = Vector2( 6, 3 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="Truco/TrucoIcon"]
+position = Vector2( 0, 30 )
+scale = Vector2( 2, 2 )
+offset = Vector2( 0, -96 )
+antialiased = true
+texture = ExtResource( 14 )
+polygon = PoolVector2Array( -74.1667, -115.8, 74.1667, -115.8, 74.1667, 115.8, -74.1667, 115.8 )
+uv = PoolVector2Array( 0, 926.4, 148.333, 926.4, 148.333, 1158, 0, 1158 )
+script = ExtResource( 13 )
+hframes = 12
+vframes = 5
+frame_coords = Vector2( 0, 4 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Truco/TrucoIcon"]
+position = Vector2( 0, 30 )
+scale = Vector2( 2, 2 )
+offset = Vector2( 0, -96 )
+antialiased = true
+texture = ExtResource( 14 )
+polygon = PoolVector2Array( -74.1667, -115.8, 74.1667, -115.8, 74.1667, 115.8, -74.1667, 115.8 )
+uv = PoolVector2Array( 0, 694.8, 148.333, 694.8, 148.333, 926.4, 0, 926.4 )
+script = ExtResource( 13 )
+hframes = 12
+vframes = 5
+frame_coords = Vector2( 0, 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Truco"]
+anims/TrucoIcon = SubResource( 4 )
 [connection signal="GameClicked" from="KlondikeSolitaire" to="." method="_on__GameClicked"]
 [connection signal="GameClicked" from="Strategy+" to="." method="_on__GameClicked"]
 [connection signal="GameClicked" from="PictureGallery" to="." method="_on__GameClicked"]
@@ -740,3 +846,4 @@ rect_scale = Vector2( 5, 5 )
 [connection signal="GameClicked" from="Shogi" to="." method="_on__GameClicked"]
 [connection signal="GameClicked" from="PyramidSolitaire" to="." method="_on__GameClicked"]
 [connection signal="GameClicked" from="FreeCell" to="." method="_on__GameClicked"]
+[connection signal="GameClicked" from="Truco" to="." method="_on__GameClicked"]

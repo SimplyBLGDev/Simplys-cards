@@ -119,7 +119,9 @@ func _on_piece_placed(pile):
 func deal():
 	var dealPiles = fourPiles + threePiles + twoPiles + handPiles
 	blockedPiles.append(deck)
+	blockedPiles.append(acesPile)
 	blockedPiles += handPiles
+	blockedPiles += dealPiles
 	gatherPiecesTo("DeckCards", deck)
 	yield(self, "GatherFinished")
 	

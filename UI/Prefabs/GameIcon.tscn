@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/UI/GameIcon.gd" type="Script" id=1]
+[ext_resource path="res://UI/Fonts/Title.tres" type="DynamicFont" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 400, 500 )
@@ -31,6 +32,7 @@ margin_right = 1000.0
 margin_bottom = 120.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]Game :)[/center]"
 text = "Game :)"

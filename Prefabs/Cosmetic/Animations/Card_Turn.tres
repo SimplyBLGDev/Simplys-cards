@@ -19,7 +19,7 @@ tracks/0/keys = {
 } ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:scale")
+tracks/1/path = NodePath("Sprite/Sprite:scale")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
