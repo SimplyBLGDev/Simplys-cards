@@ -1,6 +1,6 @@
 extends Node2D
 
-const clickSpeedWindow = 150 # Miliseconds
+const clickSpeedWindow = 180 # Miliseconds
 
 var clickPos = null
 var clickGameTime = 0
@@ -9,6 +9,7 @@ var dragging = false
 var currentHoverGame = null
 
 func _ready():
+# warning-ignore:return_value_discarded
 	$Tween.connect("tween_completed", self, "tween_completed")
 	
 	$KlondikeSolitaire/AnimationPlayer.play("KlondikeSolitaireIcon")
@@ -36,6 +37,7 @@ func _ready():
 	$PyramidSolitaire/PyramidIcon/CardB.frame_coords = Vector2(Utils.rand_range_i(0, 12), Utils.rand_range_i(1, 5))
 	$PyramidSolitaire/PyramidIcon/CardC.frame_coords = Vector2(Utils.rand_range_i(0, 12), Utils.rand_range_i(1, 5))
 
+# warning-ignore:unused_argument
 func _physics_process(delta):
 	handle_menu_sliding()
 

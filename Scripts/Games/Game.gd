@@ -36,6 +36,15 @@ func gatherPiecesTo(group, pile):
 	timer.queue_free()
 	emit_signal("GatherFinished")
 
+func get_all_childs_in_group(group):
+	var entireGroup = get_tree().get_nodes_in_group(group)
+	var r = []
+	for node in entireGroup:
+		if self.is_a_parent_of(node):
+			r.append(node)
+	
+	return r
+
 func setupGame():
 	pass
 
@@ -69,9 +78,12 @@ func internal_on_piece_placed(pile):
 	
 	return _on_piece_placed(pile)
 
+# warning-ignore:unused_argument
 func _is_piece_grabbable(piece):
 	return true
 
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _are_pieces_placeable(pieces, pile):
 	return true
 
@@ -79,12 +91,14 @@ func _are_pieces_placeable(pieces, pile):
 func _piece_dependencies(piece):
 	return [piece]
 
+# warning-ignore:unused_argument
 func _on_piece_placed(pile):
 	pass
 
 func deal():
 	pass
 
+# warning-ignore:unused_argument
 func win(place, results):
 	var ribbon = load("res://UI/Prefabs/WinRibbon.tscn").instance()
 	ribbon.results = results

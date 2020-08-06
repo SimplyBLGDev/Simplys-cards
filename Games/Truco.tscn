@@ -7,12 +7,9 @@
 
 [node name="Truco" type="Node2D"]
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Deck" parent="." instance=ExtResource( 2 )]
-position = Vector2( 88, -40 )
+position = Vector2( 240, -40 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 7, -7 )
 
@@ -24,21 +21,25 @@ faceUp = true
 pieceSet = "SpanishCards"
 tileset = "SpanishPlayingCards"
 
-[node name="PileA" parent="." instance=ExtResource( 2 )]
-position = Vector2( -40, 24 )
+[node name="PlayPile1" parent="." groups=[
+"PlayPiles",
+] instance=ExtResource( 2 )]
+position = Vector2( -40, 288 )
 maxCardSeparation = Vector2( 0, 0 )
 size = Vector2( 0, 0 )
 
-[node name="PileB" parent="." instance=ExtResource( 2 )]
-position = Vector2( -40, -104 )
+[node name="PlayPile2" parent="." groups=[
+"PlayPiles",
+] instance=ExtResource( 2 )]
+position = Vector2( -48, -280 )
 maxCardSeparation = Vector2( 0, 0 )
 size = Vector2( 0, 0 )
 
 [node name="PlayArea" type="ReferenceRect" parent="."]
-margin_left = -64.0
-margin_top = -144.0
-margin_right = 112.0
-margin_bottom = 144.0
+margin_left = -592.0
+margin_top = -504.0
+margin_right = 640.0
+margin_bottom = 704.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

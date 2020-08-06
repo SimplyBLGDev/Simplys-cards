@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Globals/GameController.gd" type="Script" id=1]
 [ext_resource path="res://SFXs/Card.wav" type="AudioStream" id=2]
 [ext_resource path="res://UI/Prefabs/HorizontalComboBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Globals/PieceGraphicsController.gd" type="Script" id=4]
+[ext_resource path="res://UI/Main Menu.tscn" type="PackedScene" id=5]
 
 [node name="Root" type="Node2D"]
 script = ExtResource( 1 )
@@ -22,6 +23,8 @@ stream = ExtResource( 2 )
 volume_db = 10.0
 
 [node name="ControlUI" type="CanvasLayer" parent="."]
+
+[node name="Main Menu" parent="ControlUI" instance=ExtResource( 5 )]
 
 [node name="ScreenTint" type="ColorRect" parent="ControlUI"]
 anchor_right = 1.0
@@ -45,6 +48,7 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="ControlUI"]
+visible = false
 anchor_right = 1.0
 margin_bottom = 67.0
 size_flags_horizontal = 2

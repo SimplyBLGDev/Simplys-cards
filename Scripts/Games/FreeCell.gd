@@ -88,7 +88,7 @@ func _are_pieces_placeable(pieces, pile):
 		if len(pieces) > 1:
 			return false # Can't drop multiple cards at once
 		return ((pile.isEmpty() and pieces[0].value == 0) or
-			(pile.top().suit == pieces[0].suit and pile.top().value == pieces[0].values - 1))
+			(pile.top().suit == pieces[0].suit and pile.top().value == pieces[0].value - 1))
 
 func _piece_dependencies(piece):
 	var pile = piece.get_pile()

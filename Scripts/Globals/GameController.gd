@@ -1,6 +1,6 @@
 extends Node2D
 
-const VERSION = "Pre-Alpha 0.3.1"
+const VERSION = "Pre-Alpha 0.3.3"
 
 # Minimum speed for card to reach cursor
 const minCardApproach = 1.5
@@ -24,15 +24,17 @@ var currentDrag
 var dragToPosition
 var subsequentDragOffset = Vector2(0, 20)
 
-var currentPlayArea = Rect2(0, 0, 0, 0)
+var currentPlayArea = Rect2(0, 0, 1280, 720)
 
 var currentGameMaster
 
 func _ready():
+# warning-ignore:return_value_discarded
 	get_tree().get_root().connect("size_changed", self, "_on_window_resized")
 	$"ControlUI/Version Label".text = VERSION
 	randomize()
 
+# warning-ignore:unused_argument
 func _physics_process(delta):
 	if currentDrag != null and dragToPosition != null:
 		process_piece_dragging()
@@ -89,6 +91,7 @@ func process_piece_dragging():
 		var from = currentDrag[i].global_position
 		var to = dragToPosition + i*subsequentDragOffset
 		var posDelta = from.distance_to(to)
+# warning-ignore:unused_variable
 		var approachSpeed = max(minCardApproach, posDelta*cardApproachSpeed)
 		var newPosition = Vector2(
 		move_toward(from.x, to.x,
@@ -166,7 +169,6 @@ func set_zoom(newPlayArea):
 	UI.scale = (Vector2(1, 1) / r) * min(playArea.x / 1280, playArea.y / 720)
 	
 	$Canvas.offset = get_viewport_rect().size / 2
-	#+ playArea / r / 1280
 
 func _on_window_resized():
 	set_zoom(currentPlayArea)
@@ -177,7 +179,8 @@ func new_game():
 func set_game(game):
 	if game == "Game Selection":
 		root.add_child(load("res://UI/Prefabs/GameSelection.tscn").instance())
-		currentGameMaster.queue_free()
+		if currentGameMaster != null:
+			currentGameMaster.queue_free()
 	else:
 		match game:
 			"Klondike Solitaire": add_child(load("res://Games/KlondikeSolitaire.tscn").instance())
@@ -191,18 +194,20 @@ func set_game(game):
 		
 		get_tree().get_root().get_node("root/GameSelection").queue_free()
 
-func animate_screen_tint(from, to, duration):
+func animate_screen_tint(from, to, duration, callbackObject = null, callback = ""):
 	if from == null:
 		from = $ControlUI/ScreenTint.color
 	$UncancellableTween.interpolate_property($ControlUI/ScreenTint, "color", from, to, duration)
+	if callbackObject != null and callback != "":
+		$UncancellableTween.interpolate_callback(callbackObject, duration, callback)
 	$UncancellableTween.start()
 
+# warning-ignore:unused_argument
 func play_SFX(piece):
 	$SFXPlayer.play()
 
 func set_UI(node):
 	UI.add_child(node)
-	#node.global_position = camera.global_position
 
 func DisableInput():
 	disableInput = true

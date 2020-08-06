@@ -4,6 +4,7 @@ const PORT = 1234
 var players = []
 
 func _ready():
+# warning-ignore:return_value_discarded
 	get_tree().connect("connected_to_server", self, "_connected")
 
 func _host_game():
