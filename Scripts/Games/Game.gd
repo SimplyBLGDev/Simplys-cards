@@ -75,6 +75,7 @@ func _is_piece_grabbable(piece):
 func _are_pieces_placeable(pieces, pile):
 	return true
 
+# returns an array of all the pieces that grabbing 'piece' would require
 func _piece_dependencies(piece):
 	return [piece]
 

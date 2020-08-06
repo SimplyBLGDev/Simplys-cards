@@ -135,12 +135,16 @@ scale = Vector2( 0.75, 0.75 )
 color = Color( 0.333333, 0.678431, 0.933333, 1 )
 offset = Vector2( 5, 5 )
 antialiased = true
-polygon = PoolVector2Array( -615, -95, -725, 95, 615, 95, 725, -95 )
+polygon = PoolVector2Array( -77.7488, -10, -77.7488, 10, 77.7488, 10, 77.7488, -10 )
 script = ExtResource( 5 )
-slope = 110.0
-size = Vector2( 1450, 190 )
+centerV = true
+centerH = true
+slope = 0.0
+size = Vector2( 155.498, 20 )
 
 [node name="MenuButton" parent="Buttons/Buttons BG" instance=ExtResource( 2 )]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -326.667, 0 )
 color = Color( 0.4, 0.352941, 0.827451, 1 )
 size = Vector2( 600, 160 )
@@ -149,6 +153,8 @@ text = "Main Menu"
 shadowDistance = 10
 
 [node name="NewGameButton" parent="Buttons/Buttons BG" instance=ExtResource( 2 )]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 323.667, 0 )
 color = Color( 0.4, 0.352941, 0.827451, 1 )
 size = Vector2( 600, 160 )

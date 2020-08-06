@@ -22,8 +22,8 @@ export var results = {
 func _ready():
 	ready = true
 	$AnimationPlayer.play("RibbonWin")
-	yield($AnimationPlayer, "animation_finished")
-	presentResults()
+	GameController.DisableInput()
+	GameController.animate_screen_tint(Color(0, 0, 0, 0), Color(0, 0, 0, 0.5), 0.35)
 
 func presentResults():
 	var timeDelta = 0
@@ -123,8 +123,18 @@ func tailChanged(value):
 	$RibbonEndR/Body.polygon = points
 
 func _on_NewGameButton_clicked():
+	if not $"Buttons/Buttons BG/NewGameButton".visible:
+		return
 	GameController.new_game()
 	queue_free()
 
 func _on_MenuButton_clicked():
+	if not $"Buttons/Buttons BG/MenuButton".visible:
+		return
 	GameController.set_game("Game Selection")
+	queue_free()
+
+func _notification(what): 
+		if what == NOTIFICATION_PREDELETE:
+			GameController.animate_screen_tint(null, Color(0, 0, 0, 0), 0.35)
+			GameController.EnableInput()

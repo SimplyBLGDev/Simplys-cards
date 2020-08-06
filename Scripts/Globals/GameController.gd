@@ -1,6 +1,6 @@
 extends Node2D
 
-const VERSION = "Pre-Alpha 0.3.0"
+const VERSION = "Pre-Alpha 0.3.1"
 
 # Minimum speed for card to reach cursor
 const minCardApproach = 1.5
@@ -9,8 +9,10 @@ const cardApproachSpeed = 0.2
 # The higher the value the more mouse speed influences card rotation whiel dragging
 const movementAngleBySpeedModifier = 400
 
+var disableInput = false
+
 onready var camera = $Camera2D
-onready var root = get_tree().get_root()
+onready var root = get_tree().get_root().get_node("root")
 onready var UI = $Canvas/UIOff/UI
 onready var pieceGfx = $PieceGraphicsController
 
@@ -36,7 +38,8 @@ func _physics_process(delta):
 		process_piece_dragging()
 
 func _input(event):
-	
+	if disableInput:
+		return
 	if event is InputEventMouseMotion:
 		if currentDrag != null:
 			dragToPosition = get_global_mouse_position()
@@ -173,7 +176,8 @@ func new_game():
 
 func set_game(game):
 	if game == "Game Selection":
-		root.add_child(load("res://UI/GameSelection.tscn").instance())
+		root.add_child(load("res://UI/Prefabs/GameSelection.tscn").instance())
+		currentGameMaster.queue_free()
 	else:
 		match game:
 			"Klondike Solitaire": add_child(load("res://Games/KlondikeSolitaire.tscn").instance())
@@ -187,9 +191,21 @@ func set_game(game):
 		
 		get_tree().get_root().get_node("root/GameSelection").queue_free()
 
+func animate_screen_tint(from, to, duration):
+	if from == null:
+		from = $ControlUI/ScreenTint.color
+	$UncancellableTween.interpolate_property($ControlUI/ScreenTint, "color", from, to, duration)
+	$UncancellableTween.start()
+
 func play_SFX(piece):
 	$SFXPlayer.play()
 
 func set_UI(node):
 	UI.add_child(node)
 	#node.global_position = camera.global_position
+
+func DisableInput():
+	disableInput = true
+
+func EnableInput():
+	disableInput = false

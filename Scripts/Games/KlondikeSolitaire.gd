@@ -95,11 +95,10 @@ func _are_pieces_placeable(pieces, pile):
 	return false
 
 func _piece_dependencies(piece):
-	# returns an array of all the pieces that grabbing 'piece' would require
 	var pile = piece.get_pile()
 	
 	if pile in standardPiles:
-		var ix = pile.pieces.find(piece)
+		var ix = pile.positionInPile(piece)
 		var ret = []
 		for i in range(ix, len(pile.pieces)):
 			ret.append(pile.pieces[i])

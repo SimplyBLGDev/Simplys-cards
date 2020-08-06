@@ -165,6 +165,12 @@ func top():
 func isEmpty():
 	return len(pieces) == 0
 
+func positionInPile(piece):
+	if not piece in pieces:
+		return -1
+	
+	return pieces.find(piece)
+
 func generate_per_piece_collider():
 	var pos = maxCardSeparation
 	while abs(pos.x) < abs(size.x) or abs(pos.y) < abs(size.y):
