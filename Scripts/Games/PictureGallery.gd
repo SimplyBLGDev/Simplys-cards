@@ -3,7 +3,7 @@ extends Game
 signal dealNextCard
 
 # SETTINGS
-export var allowAnySuit = false
+
 # SETTINGS
 
 var deck
@@ -60,37 +60,23 @@ func _are_pieces_placeable(pieces, pile):
 		return pieces[0].value == 0
 	elif pile in handPiles:
 		return len(pile.pieces) == 0
-	elif pile.isEmpty() or lastCard.suit == pieces[0].suit or allowAnySuit:
-		if pile in twoPiles:
-			match int(pieces[0].value):
-				1:
-					return len(pile.pieces) == 0
-				4:
-					return len(pile.pieces) == 1 and lastCard.value == 1
-				7:
-					return len(pile.pieces) == 2 and lastCard.value == 4
-				10:
-					return len(pile.pieces) == 3 and lastCard.value == 7
-		elif pile in threePiles:
-			match int(pieces[0].value):
-				2:
-					return len(pile.pieces) == 0
-				5:
-					return len(pile.pieces) == 1 and lastCard.value == 2
-				8:
-					return len(pile.pieces) == 2 and lastCard.value == 5
-				11:
-					return len(pile.pieces) == 3 and lastCard.value == 8
-		elif pile in fourPiles:
-			match int(pieces[0].value):
-				3:
-					return len(pile.pieces) == 0
-				6:
-					return len(pile.pieces) == 1 and lastCard.value == 3
-				9:
-					return len(pile.pieces) == 2 and lastCard.value == 6
-				12:
-					return len(pile.pieces) == 3 and lastCard.value == 9
+	elif pile.isEmpty():
+		match pieces[0].value:
+			1:
+				return pile in twoPiles
+			2:
+				return pile in threePiles
+			3:
+				return pile in fourPiles
+			_:
+				return false
+	else:
+		if lastCard.suit == pieces[0].suit:
+			if ((pile in twoPiles and pile.pieces[0].value != 1) or
+				(pile in threePiles and pile.pieces[0].value != 2) or
+				(pile in fourPiles and pile.pieces[0].value != 3)):
+				return false
+			return pile.top().value + 3 == pieces[0].value
 	
 	return false
 

@@ -11,10 +11,10 @@ export var pieceSet = "StandardCards"
 export var tilesetName = "StandardDeckv2"
 
 export var faceUp = true
-export var suit = 0
-export var value = 0
+export var suit : int = 0
+export var value : int = 0
 
-export var backIX = 1
+export var backIX : int = 1
 
 func _ready():
 	update_sprite()

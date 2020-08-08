@@ -46,3 +46,4 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Multiplayer"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/btnSingleplayer" to="." method="_on_btnSingleplayer_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/btnMultiplayer" to="." method="_on_btnMultiplayer_pressed"]

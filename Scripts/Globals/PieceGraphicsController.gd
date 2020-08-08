@@ -11,12 +11,20 @@ const deckFrameDic = { # Amount of Tiles in each set
 }
 
 var allocatedMaterials = {}
+var allocatedCollisionShapes = {}
 
 func get_texture(texturePath):
 	if not texturePath in allocatedMaterials.keys():
 		allocatedMaterials[texturePath] = ResourceLoader.load(setsPath + texturePath + ".png")
 	
 	return allocatedMaterials[texturePath]
+
+func get_shape(size):
+	if not size in allocatedCollisionShapes:
+		allocatedCollisionShapes[size] = RectangleShape2D.new()
+		allocatedCollisionShapes[size].extents = size/2;
+	
+	return allocatedCollisionShapes[size]
 
 func set_piece(piece):
 	var tileSet = piece.pieceSet
@@ -26,3 +34,4 @@ func set_piece(piece):
 	sprite.vframes = deckFrameDic[tileSet].y
 	
 	sprite.scale = deckSizeDic[tileSet] / (sprite.texture.get_size() / deckFrameDic[tileSet])
+	piece.get_node("Area2D/CollisionShape").shape = get_shape(sprite.texture.get_size() / deckFrameDic[tileSet])
