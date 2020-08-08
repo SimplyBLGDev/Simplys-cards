@@ -31,27 +31,27 @@ values = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
 
 [node name="SuitPile1" parent="." instance=ExtResource( 3 )]
 position = Vector2( -30, -134 )
-pileMarker = 2
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 3, -3 )
+pileIcon = 0
 
 [node name="SuitPile2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 18, -134 )
-pileMarker = 2
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 3, -3 )
+pileIcon = 0
 
 [node name="SuitPile3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 66, -134 )
-pileMarker = 2
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 3, -3 )
+pileIcon = 0
 
 [node name="SuitPile4" parent="." instance=ExtResource( 3 )]
 position = Vector2( 114, -134 )
-pileMarker = 2
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 3, -3 )
+pileIcon = 0
 
 [node name="Pile1" parent="." instance=ExtResource( 3 )]
 position = Vector2( -126, -38 )

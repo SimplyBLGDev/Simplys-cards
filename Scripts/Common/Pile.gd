@@ -13,9 +13,6 @@ signal _pile_doubleClicked
 signal _pile_emptied
 signal _shuffle_over
 
-enum PileMarkers { None, Standard, SuitPile }
-export var pileMarker = PileMarkers.Standard
-
 export var cardPosAnimationLength = 0.5
 
 export var maxCardSeparation = Vector2(0, -5)
@@ -26,9 +23,15 @@ export var overrideColliderSize = Vector2(0, 0)
 export var useOverrideColliderOffset = false
 export var overrideColliderOffset = Vector2(0, 0)
 
+export var pieceSet = "StandardCards"
+export var tilesetName = "StandardDeckv2"
+export var color = Color.white
+export var pileIcon = 0
+
 var pieces = []
 
 func _ready(): # Ready is not overridable
+	GameController.pieceGfx.set_pile(self)
 	connect("ready", self, "_on_ready")
 
 func _on_ready():
@@ -179,3 +182,6 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 			emit_signal("_pile_clicked", self)
 		if event.doubleclick:
 			emit_signal("_pile_doubleClicked", self)
+
+func get_texture_path():
+	return pieceSet + "/" + tilesetName

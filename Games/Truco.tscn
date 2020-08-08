@@ -24,6 +24,8 @@ __meta__ = {
 position = Vector2( 240, -40 )
 maxCardSeparation = Vector2( 1, -1 )
 size = Vector2( 7, -7 )
+pieceSet = "SpanishCards"
+tilesetName = "SpanishPlayingCards"
 
 [node name="DeckGenerator" type="Node2D" parent="Deck"]
 script = ExtResource( 3 )
@@ -39,6 +41,8 @@ tileset = "SpanishPlayingCards"
 position = Vector2( -40, 288 )
 maxCardSeparation = Vector2( 0, 0 )
 size = Vector2( 0, 0 )
+pieceSet = "SpanishCards"
+tilesetName = "SpanishPlayingCards"
 
 [node name="PlayPile2" parent="." groups=[
 "PlayPiles",
@@ -46,5 +50,7 @@ size = Vector2( 0, 0 )
 position = Vector2( -48, -280 )
 maxCardSeparation = Vector2( 0, 0 )
 size = Vector2( 0, 0 )
+pieceSet = "SpanishCards"
+tilesetName = "SpanishPlayingCards"
 
 [node name="Timer" type="Timer" parent="."]

@@ -304,51 +304,51 @@ size = Vector2( 0, 250 )
 
 [node name="SuitPile1" parent="." instance=ExtResource( 2 )]
 position = Vector2( -120, -224 )
-pileMarker = 2
 maxCardSeparation = Vector2( 0.5, -0.5 )
 size = Vector2( 5, -5 )
+pileIcon = 0
 
 [node name="SuitPile2" parent="." instance=ExtResource( 2 )]
 position = Vector2( -72, -224 )
-pileMarker = 2
 maxCardSeparation = Vector2( 0.5, -0.5 )
 size = Vector2( 5, -5 )
+pileIcon = 0
 
 [node name="SuitPile3" parent="." instance=ExtResource( 2 )]
 position = Vector2( -24, -224 )
-pileMarker = 2
 maxCardSeparation = Vector2( 0.5, -0.5 )
 size = Vector2( 5, -5 )
+pileIcon = 0
 
 [node name="SuitPile4" parent="." instance=ExtResource( 2 )]
 position = Vector2( 24, -224 )
-pileMarker = 2
 maxCardSeparation = Vector2( 0.5, -0.5 )
 size = Vector2( 5, -5 )
+pileIcon = 0
 
 [node name="SuitPile5" parent="." instance=ExtResource( 2 )]
 position = Vector2( 72, -224 )
-pileMarker = 2
 maxCardSeparation = Vector2( 0.5, -0.5 )
 size = Vector2( 5, -5 )
+pileIcon = 0
 
 [node name="SuitPile6" parent="." instance=ExtResource( 2 )]
 position = Vector2( 120, -224 )
-pileMarker = 2
 maxCardSeparation = Vector2( 0.5, -0.5 )
 size = Vector2( 5, -5 )
+pileIcon = 0
 
 [node name="SuitPile7" parent="." instance=ExtResource( 2 )]
 position = Vector2( 168, -224 )
-pileMarker = 2
 maxCardSeparation = Vector2( 0.5, -0.5 )
 size = Vector2( 5, -5 )
+pileIcon = 0
 
 [node name="SuitPile8" parent="." instance=ExtResource( 2 )]
 position = Vector2( 216, -224 )
-pileMarker = 2
 maxCardSeparation = Vector2( 0.5, -0.5 )
 size = Vector2( 5, -5 )
+pileIcon = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/SpiderSolitaireDeal = SubResource( 1 )

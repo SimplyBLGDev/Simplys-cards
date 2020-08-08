@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Sprites/PileMarker.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Piles/PileMarker.png" type="Texture" id=1]
+
 
 [node name="Sprite" type="NinePatchRect"]
 modulate = Color( 0.501961, 0.835294, 0.501961, 0.752941 )
