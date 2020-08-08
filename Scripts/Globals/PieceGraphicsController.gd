@@ -4,16 +4,18 @@ const setsPath = "res://PieceSets/"
 const pilesPath = "res://Sprites/Piles/"
 const pileIconsPath = "res://Sprites/Piles/icons/"
 
+const pileColliderMargin = 0.125 # Ratio compared to normal size
+
 ## Pile 9 Patch texture = res://Sprites/Piles/[0].png
-## 9 Patch margin = [1] (Left, top, right, bottom)
+## 9 Patch texture margin = [1] (Left, top, right, bottom)
 ## Pile default margin (compared to piece) = [2]
 ## Pile icons addresses array [3]
 const deckPileDic = {
-	"StandardCards/StandardDeckv2":["PileMarker", Rect2(2, 2, 2, 2), Vector2(2, 2), ["SuitPileIcon"]],
+	"StandardCards/StandardDeckv2":["PileMarker", Rect2(2, 2, 2, 2), Vector2(4, 4), ["SuitPileIcon"]],
 	"SpanishCards/SpanishPlayingCards":["PileMarkerR", Rect2(8, 8, 8, 8), Vector2(10, 10), []]
 }
 const deckSizeDic = { # Cards unit dimensions by set
-	"StandardCards":Vector2(38, 63),
+	"StandardCards":Vector2(38, 64), # While the cards are 32x63 even numbers work better for pixelated margins
 	"SpanishCards":Vector2(148, 232)
 }
 const deckFrameDic = { # Amount of Tiles in each set
@@ -62,7 +64,16 @@ func set_piece(piece):
 	piece.get_node("Area2D/CollisionShape").shape = get_shape(sprite.texture.get_size() / deckFrameDic[tileSet])
 
 func set_pile(pile):
+	set_pile_sprite(pile)
+	
+	if pile.perPieceCollider:
+		set_pile_per_piece_collider(pile)
+	else:
+		set_pile_collider(pile)
+
+func set_pile_sprite(pile):
 	var patch = pile.get_node("Pile9Patch")
+	var collider = pile.get_node("Area2D/CollisionShape")
 	var dicResults = deckPileDic[pile.get_texture_path()]
 	patch.texture = get_9_patch_texture(dicResults[0])
 	patch.patch_margin_left = dicResults[1].position.x
@@ -79,3 +90,36 @@ func set_pile(pile):
 	if pile.pileIcon >= 0: # -1 is no icon other negatives are invalid
 		pile.get_node("PileIcon").modulate = pile.color
 		pile.get_node("PileIcon/Sprite").texture = get_pile_icon_texture(dicResults[3][pile.pileIcon])
+
+## Both pile collider method are pretty messy, cleanup required
+func set_pile_collider(pile):
+	var dicResults = deckPileDic[pile.get_texture_path()]
+	
+	var colShape = pile.get_node("Area2D/CollisionShape")
+	var colSize = pile.size + deckSizeDic[pile.pieceSet] + dicResults[2]
+	var colOff = pile.size/2
+	## Add collider margin, same margin in both directions regardless of aspect ratio
+	colSize += Vector2(1, 1) * (max(deckSizeDic[pile.pieceSet].x, deckSizeDic[pile.pieceSet].y) * pileColliderMargin)
+	
+	if pile.overrideColliderSize != Vector2(0, 0):
+		colSize = pile.overrideColliderSize
+	if pile.useOverrideColliderOffset:
+		colOff = pile.overrideColliderOffset
+	
+	colShape.shape = get_shape(colSize)
+	colShape.position = colOff
+
+func set_pile_per_piece_collider(pile):
+	var dicResults = deckPileDic[pile.get_texture_path()]
+	var colSize = deckSizeDic[pile.pieceSet] + dicResults[2]
+	colSize += Vector2(1, 1) * (max(deckSizeDic[pile.pieceSet].x, deckSizeDic[pile.pieceSet].y) * pileColliderMargin)
+	var shape = get_shape(colSize)
+	pile.get_node("Area2D/CollisionShape").shape = shape
+	
+	var pos = pile.maxCardSeparation
+	while abs(pos.x) < abs(pile.size.x) or abs(pos.y) < abs(pile.size.y):
+		var newCol = CollisionShape2D.new()
+		newCol.shape = shape
+		pile.get_node("Area2D").add_child(newCol)
+		newCol.position = pos
+		pos += pile.maxCardSeparation

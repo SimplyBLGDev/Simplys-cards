@@ -22,6 +22,7 @@ export var disableSorting = false
 export var overrideColliderSize = Vector2(0, 0)
 export var useOverrideColliderOffset = false
 export var overrideColliderOffset = Vector2(0, 0)
+export var perPieceCollider = false
 
 export var pieceSet = "StandardCards"
 export var tilesetName = "StandardDeckv2"
@@ -35,16 +36,7 @@ func _ready(): # Ready is not overridable
 	connect("ready", self, "_on_ready")
 
 func _on_ready():
-	var colSize = Vector2(size.x/2 + 24, size.y/2 + 38)
-	var colOff = size/2
-	if overrideColliderSize != Vector2(0, 0):
-		colSize = overrideColliderSize
-	if useOverrideColliderOffset:
-		colOff = overrideColliderOffset
-	
-	$Area2D/CollisionShape2D.shape = $Area2D/CollisionShape2D.shape.duplicate()
-	$Area2D/CollisionShape2D.shape.extents = colSize
-	$Area2D/CollisionShape2D.position = colOff
+	pass
 
 func shuffle():
 	pieces.shuffle()

@@ -1,6 +1,6 @@
 extends Node2D
 
-const VERSION = "Pre-Alpha 0.3.3"
+const VERSION = "Pre-Alpha 0.3.5"
 
 # Minimum speed for card to reach cursor
 const minCardApproach = 1.5
