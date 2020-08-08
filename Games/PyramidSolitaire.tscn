@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Prefabs/Pile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Common/DeckGenerator.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Common/PlayArea.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Games/PyramidSolitaire.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Common/PreciseColPile.gd" type="Script" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "PyramidSolitaireDeal"
@@ -116,9 +117,9 @@ __meta__ = {
 dealSpeed = 0.3
 
 [node name="PlayArea" type="ReferenceRect" parent="."]
-margin_left = -176.0
+margin_left = -152.0
 margin_top = -136.0
-margin_right = 176.0
+margin_right = 152.0
 margin_bottom = 136.0
 script = ExtResource( 3 )
 __meta__ = {
@@ -126,7 +127,7 @@ __meta__ = {
 }
 
 [node name="Deck" parent="." instance=ExtResource( 1 )]
-position = Vector2( -152, -96 )
+position = Vector2( -128, -96 )
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 5, -5 )
 
@@ -136,63 +137,63 @@ suits = [ 1, 2, 3, 4 ]
 values = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
 
 [node name="DeckFlip" parent="." instance=ExtResource( 1 )]
-position = Vector2( -152, -24 )
+position = Vector2( -128, -24 )
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 5, -5 )
 
 [node name="ResultPile" parent="." instance=ExtResource( 1 )]
-position = Vector2( 152, -96 )
+position = Vector2( 128, -96 )
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 5, -5 )
 
 [node name="Pile1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, -96 )
+script = ExtResource( 5 )
 pileMarker = 0
-maxCardSeparation = Vector2( 26, 32 )
-size = Vector2( 182, 224 )
-perPieceCollider = true
+maxCardSeparation = Vector2( 20, 32 )
+size = Vector2( 176, 224 )
 
 [node name="Pile2" parent="." instance=ExtResource( 1 )]
-position = Vector2( -26, -64 )
+position = Vector2( -20, -64 )
+script = ExtResource( 5 )
 pileMarker = 0
-maxCardSeparation = Vector2( 26, 32 )
+maxCardSeparation = Vector2( 20, 32 )
 size = Vector2( 156, 192 )
-perPieceCollider = true
 
 [node name="Pile3" parent="." instance=ExtResource( 1 )]
-position = Vector2( -52, -32 )
+position = Vector2( -40, -32 )
+script = ExtResource( 5 )
 pileMarker = 0
-maxCardSeparation = Vector2( 26, 32 )
-size = Vector2( 130, 160 )
-perPieceCollider = true
+maxCardSeparation = Vector2( 20, 32 )
+size = Vector2( 156, 192 )
 
 [node name="Pile4" parent="." instance=ExtResource( 1 )]
-position = Vector2( -78, 0 )
+position = Vector2( -60, 0 )
+script = ExtResource( 5 )
 pileMarker = 0
-maxCardSeparation = Vector2( 26, 32 )
-size = Vector2( 104, 128 )
-perPieceCollider = true
+maxCardSeparation = Vector2( 20, 32 )
+size = Vector2( 156, 192 )
 
 [node name="Pile5" parent="." instance=ExtResource( 1 )]
-position = Vector2( -104, 32 )
+position = Vector2( -80, 32 )
+script = ExtResource( 5 )
 pileMarker = 0
-maxCardSeparation = Vector2( 26, 32 )
-size = Vector2( 78, 96 )
-perPieceCollider = true
+maxCardSeparation = Vector2( 20, 32 )
+size = Vector2( 156, 192 )
 
 [node name="Pile6" parent="." instance=ExtResource( 1 )]
-position = Vector2( -130, 64 )
+position = Vector2( -100, 64 )
+script = ExtResource( 5 )
 pileMarker = 0
-maxCardSeparation = Vector2( 26, 32 )
-size = Vector2( 52, 64 )
-perPieceCollider = true
+maxCardSeparation = Vector2( 20, 32 )
+size = Vector2( 156, 192 )
 
 [node name="Pile7" parent="." instance=ExtResource( 1 )]
-position = Vector2( -156, 96 )
+position = Vector2( -120, 96 )
+script = ExtResource( 5 )
 pileMarker = 0
-maxCardSeparation = Vector2( 26, 32 )
-size = Vector2( 26, 32 )
-perPieceCollider = true
+maxCardSeparation = Vector2( 20, 32 )
+size = Vector2( 156, 192 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/PyramidSolitaireDeal = SubResource( 1 )

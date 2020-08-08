@@ -22,7 +22,6 @@ export var maxCardSeparation = Vector2(0, -5)
 export var size = Vector2(50, 50)
 export var disableSorting = false
 
-export var perPieceCollider = false
 export var overrideColliderSize = Vector2(0, 0)
 export var useOverrideColliderOffset = false
 export var overrideColliderOffset = Vector2(0, 0)
@@ -32,8 +31,6 @@ var pieces = []
 func _ready():
 	var colSize = Vector2(size.x/2 + 24, size.y/2 + 38)
 	var colOff = size/2
-	if perPieceCollider:
-		return generate_per_piece_collider()
 	if overrideColliderSize != Vector2(0, 0):
 		colSize = overrideColliderSize
 	if useOverrideColliderOffset:
@@ -170,18 +167,6 @@ func positionInPile(piece):
 		return -1
 	
 	return pieces.find(piece)
-
-func generate_per_piece_collider():
-	var pos = maxCardSeparation
-	while abs(pos.x) < abs(size.x) or abs(pos.y) < abs(size.y):
-		var newCol = CollisionShape2D.new()
-		var shape = RectangleShape2D.new()
-		var colSize = Vector2(20, 34) # Card size + margin
-		shape.extents = colSize
-		newCol.shape = shape
-		$Area2D.add_child(newCol)
-		newCol.position = pos
-		pos += maxCardSeparation
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if blocked():

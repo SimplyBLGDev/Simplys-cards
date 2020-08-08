@@ -52,10 +52,6 @@ func _is_piece_grabbable(piece):
 		return pile.top() == piece
 
 func _are_pieces_placeable(pieces, pile):
-	var lastCard = null
-	if len(pile.pieces) != 0:
-		lastCard = pile.top()
-	
 	if pile == acesPile:
 		return pieces[0].value == 0
 	elif pile in handPiles:
@@ -71,7 +67,7 @@ func _are_pieces_placeable(pieces, pile):
 			_:
 				return false
 	else:
-		if lastCard.suit == pieces[0].suit:
+		if pile.top().suit == pieces[0].suit:
 			if ((pile in twoPiles and pile.pieces[0].value != 1) or
 				(pile in threePiles and pile.pieces[0].value != 2) or
 				(pile in fourPiles and pile.pieces[0].value != 3)):

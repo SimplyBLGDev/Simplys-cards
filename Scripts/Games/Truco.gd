@@ -29,13 +29,13 @@ func deal():
 	gatherPiecesTo("DeckCards", deck)
 	deck.shuffle()
 	
-	playPiles[0].add_piece(deck.top())
-	playPiles[0].add_piece(deck.top())
-	playPiles[0].add_piece(deck.top())
-	
-	playPiles[1].add_piece(deck.top())
-	playPiles[1].add_piece(deck.top())
-	playPiles[1].add_piece(deck.top())
+	for i in 3:
+		playPiles[0].add_piece(deck.top())
+		$Timer.start(1 / dealSpeed)
+		yield($Timer, "timeout")
+		playPiles[1].add_piece(deck.top())
+		$Timer.start(1 / dealSpeed)
+		yield($Timer, "timeout")
 
 func calculateEnvido(hand):
 	var cards = Utils.sort_v2_pieces_by_value(Utils.get_pieces_as_Vector2(hand))
