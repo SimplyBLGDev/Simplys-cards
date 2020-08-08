@@ -117,8 +117,8 @@ __meta__ = {
 dealSpeed = 0.3
 
 [node name="PlayArea" type="ReferenceRect" parent="."]
-margin_left = -152.0
-margin_top = -136.0
+margin_left = -160.0
+margin_top = -144.0
 margin_right = 152.0
 margin_bottom = 136.0
 script = ExtResource( 3 )
@@ -127,7 +127,7 @@ __meta__ = {
 }
 
 [node name="Deck" parent="." instance=ExtResource( 1 )]
-position = Vector2( -128, -96 )
+position = Vector2( -132, -104 )
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 5, -5 )
 
@@ -137,12 +137,12 @@ suits = [ 1, 2, 3, 4 ]
 values = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
 
 [node name="DeckFlip" parent="." instance=ExtResource( 1 )]
-position = Vector2( -128, -24 )
+position = Vector2( -132, -32 )
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 5, -5 )
 
 [node name="ResultPile" parent="." instance=ExtResource( 1 )]
-position = Vector2( 128, -96 )
+position = Vector2( 128, -104 )
 maxCardSeparation = Vector2( 0.2, -0.2 )
 size = Vector2( 5, -5 )
 
@@ -150,50 +150,50 @@ size = Vector2( 5, -5 )
 position = Vector2( 0, -96 )
 script = ExtResource( 5 )
 pileMarker = 0
-maxCardSeparation = Vector2( 20, 32 )
-size = Vector2( 176, 224 )
+maxCardSeparation = Vector2( 22, 32 )
+size = Vector2( 154, 224 )
 
 [node name="Pile2" parent="." instance=ExtResource( 1 )]
-position = Vector2( -20, -64 )
+position = Vector2( -22, -64 )
 script = ExtResource( 5 )
 pileMarker = 0
-maxCardSeparation = Vector2( 20, 32 )
-size = Vector2( 156, 192 )
+maxCardSeparation = Vector2( 22, 32 )
+size = Vector2( 132, 192 )
 
 [node name="Pile3" parent="." instance=ExtResource( 1 )]
-position = Vector2( -40, -32 )
+position = Vector2( -44, -32 )
 script = ExtResource( 5 )
 pileMarker = 0
-maxCardSeparation = Vector2( 20, 32 )
-size = Vector2( 156, 192 )
+maxCardSeparation = Vector2( 22, 32 )
+size = Vector2( 110, 160 )
 
 [node name="Pile4" parent="." instance=ExtResource( 1 )]
-position = Vector2( -60, 0 )
+position = Vector2( -66, 0 )
 script = ExtResource( 5 )
 pileMarker = 0
-maxCardSeparation = Vector2( 20, 32 )
-size = Vector2( 156, 192 )
+maxCardSeparation = Vector2( 22, 32 )
+size = Vector2( 88, 128 )
 
 [node name="Pile5" parent="." instance=ExtResource( 1 )]
-position = Vector2( -80, 32 )
+position = Vector2( -88, 32 )
 script = ExtResource( 5 )
 pileMarker = 0
-maxCardSeparation = Vector2( 20, 32 )
-size = Vector2( 156, 192 )
+maxCardSeparation = Vector2( 22, 32 )
+size = Vector2( 66, 96 )
 
 [node name="Pile6" parent="." instance=ExtResource( 1 )]
-position = Vector2( -100, 64 )
+position = Vector2( -110, 64 )
 script = ExtResource( 5 )
 pileMarker = 0
-maxCardSeparation = Vector2( 20, 32 )
-size = Vector2( 156, 192 )
+maxCardSeparation = Vector2( 22, 32 )
+size = Vector2( 44, 64 )
 
 [node name="Pile7" parent="." instance=ExtResource( 1 )]
-position = Vector2( -120, 96 )
+position = Vector2( -132, 96 )
 script = ExtResource( 5 )
 pileMarker = 0
-maxCardSeparation = Vector2( 20, 32 )
-size = Vector2( 156, 192 )
+maxCardSeparation = Vector2( 22, 32 )
+size = Vector2( 0, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/PyramidSolitaireDeal = SubResource( 1 )

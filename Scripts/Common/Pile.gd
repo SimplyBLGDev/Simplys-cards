@@ -3,7 +3,7 @@ extends Node2D
 class_name Pile
 
 # Signals are only sent while the pile is not blocked (so user provoked, shifting
-# pieces programatically will not throw a signal
+# pieces programatically will not throw a signal)
 signal _piece_grabbed
 signal _piece_released
 signal _piece_taken
@@ -28,7 +28,10 @@ export var overrideColliderOffset = Vector2(0, 0)
 
 var pieces = []
 
-func _ready():
+func _ready(): # Ready is not overridable
+	connect("ready", self, "_on_ready")
+
+func _on_ready():
 	var colSize = Vector2(size.x/2 + 24, size.y/2 + 38)
 	var colOff = size/2
 	if overrideColliderSize != Vector2(0, 0):
