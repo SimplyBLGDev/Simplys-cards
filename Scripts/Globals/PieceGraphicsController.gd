@@ -15,7 +15,7 @@ const deckPileDic = {
 	"SpanishCards/SpanishPlayingCards":["PileMarkerR", Rect2(8, 8, 8, 8), Vector2(10, 10), []]
 }
 const deckSizeDic = { # Cards unit dimensions by set
-	"StandardCards":Vector2(38, 64), # While the cards are 32x63 even numbers work better for pixelated margins
+	"StandardCards":Vector2(40, 64), # While the cards are 32x63 even numbers work better for pixelated margins
 	"SpanishCards":Vector2(148, 232)
 }
 const deckFrameDic = { # Amount of Tiles in each set
@@ -61,7 +61,7 @@ func set_piece(piece):
 	sprite.vframes = deckFrameDic[tileSet].y
 	
 	sprite.scale = deckSizeDic[tileSet] / (sprite.texture.get_size() / deckFrameDic[tileSet])
-	piece.get_node("Area2D/CollisionShape").shape = get_shape(sprite.texture.get_size() / deckFrameDic[tileSet])
+	piece.get_node("Area2D/CollisionShape").shape = get_shape(deckSizeDic[tileSet])
 
 func set_pile(pile):
 	set_pile_sprite(pile)
